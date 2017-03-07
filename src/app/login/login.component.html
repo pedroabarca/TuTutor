@@ -1,14 +1,52 @@
 <mdl-layout>
   <mdl-layout-content>
-  	<div class="mdl-grid">
-  		<div class="mdl-cell mdl-cell--8-col mdl-layout--large-screen-only">
-  			<img src="assets/img/logo.png" class="vertical-align">
+  	<div class="mdl-grid main-container">
+  		<div class="mdl-cell mdl-cell--8-col mdl-layout--large-screen-only text-center">
+        <div class="vertical-align">
+          <img src="assets/img/logo.png">
+          <h2>¡Bienvenido a tu Tututor!</h2>
+          <h4>Conseguir un tutor nunca ha sido tan fácil</h4>
+        </div>
   		</div>
   		<div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone">
-  			<mdl-card class="demo-card-square vertical-align" mdl-shadow="4">
-				 	<mdl-card-title>
+  			<mdl-card class="vertical-align" mdl-shadow="4">
+				 	<mdl-card-title class="background-primary color-white">
             <h2 mdl-card-title-text>Acceder</h2>
           </mdl-card-title>
+          <mdl-card-supporting-text class="text-center">
+            <form>
+              <div class="mdl-grid">
+                <div class="mdl-cell--2-col input-icon">
+                  <span class="text-color"><i class="material-icons">email</i></span>
+                </div>
+                <div class="mdl-cell--10-col">
+                  <mdl-textfield type="email" label="Correo electrónico" floating-label name="email"></mdl-textfield>
+                </div>
+                <div class="mdl-cell--2-col input-icon">
+                  <span class="text-color"><i class="material-icons">lock</i></span>
+                </div>
+                <div class="mdl-cell--10-col">
+                  <mdl-textfield type="password" label="Contraseña" floating-label name="password"></mdl-textfield>
+                </div>
+                <div class="icon-container">
+                  <img src="assets/img/facebook.png" class="right">
+                </div>
+                <div class="icon-container">
+                  <img src="assets/img/google.png" class="left">
+                </div>
+                <div class="icon-container">
+                  <button mdl-button mdl-ripple class="btn-font-color">
+                    Registrarse
+                  </button>
+                </div>
+                <div class="icon-container">
+                  <button mdl-button mdl-ripple class="btn-font-color">
+                    Iniciar sesión
+                  </button>
+                </div>
+              </div>
+            </form>
+          </mdl-card-supporting-text>
   			</mdl-card>
   		</div>
   	</div>
