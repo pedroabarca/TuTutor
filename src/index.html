@@ -7,8 +7,21 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="src/styles.css">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-login>Loading...</app-login>
+  <script src="node_modules/systemjs/dist/system.js"></script>
+  <script type="text/javascript">
+  	System.config({
+		  map: {
+		  	'angular2-mdl': 'vendor/angular2-mdl'
+		  }, 
+		  packages: {
+        'angular2-mdl': { main: 'bundle/angular2-mdl.js'}
+      }
+		});
+  </script>
 </body>
 </html>
