@@ -19,6 +19,11 @@
 .text-center {
   text-align: center;
 }
+.container-center {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .color-primary {
   color: #009688;
 }
@@ -28,10 +33,9 @@
 .background-primary {
   background-color: #009688;
 }
-.vertical-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+.background-hover:hover {
+  background-color: #00897B;
+  color: white;
 }
 .right {
   float: right;
@@ -43,4 +47,82 @@
   width: 40%;
   margin: 0 auto;
   padding: 20px 0;
+}
+.cursor {
+  cursor: pointer;
+}
+.vertical-space {
+  line-height: 0.5rem;
+}
+.full-width {
+  width: 100%;
+}
+@media (max-width: 479px) {
+  .full-height {
+    height: 100%;
+  }
+  .extra-large-text {
+    font-size: 32px;
+  }
+  .large-text {
+    font-size: 16px;
+  }
+  .medium-text {
+    font-size: 12px;
+  }
+  .small-text {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 839px) {
+  .vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .extra-large-text {
+    font-size: 32px;
+  }
+  .large-text {
+    font-size: 24px;
+  }
+  .medium-text {
+    font-size: 16px;
+  }
+  .small-text {
+    font-size: 12px;
+  }
+  .main-container {
+    padding: 0 2rem;
+  }
+  .parcial-height {
+    height: 80%;
+  }
+}
+
+@media (min-width: 840px) {
+  .vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .main-container {
+    padding: 0 2rem;
+  }
+  .parcial-height {
+    height: 80%;
+  }
+  .extra-large-text {
+    font-size: 42px;
+  }
+  .large-text {
+    font-size: 32px;
+  }
+  .medium-text {
+    font-size: 24px;
+  }
+  .small-text {
+    font-size: 16px;
+  }
 }
