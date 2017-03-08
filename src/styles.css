@@ -93,10 +93,9 @@ a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
   font-size: 16px;
   display: inline-block;
   box-sizing: border-box;
-  width: 300px;
-  max-width: 100%;
-  margin: 0;
-  padding: 20px 0; }
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0; }
 .mdl-textfield .mdl-button {
   position: absolute;
   bottom: 20px; }
@@ -135,8 +134,6 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__input,
   bottom: 0;
   color: rgba(0,0,0, 0.26);
   font-size: 16px;
-  left: 0;
-  right: 0;
   pointer-events: none;
   position: absolute;
   display: block;
@@ -160,7 +157,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
 .mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
 .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
   color: #009688;
-  font-size: 12px;
+  font-size: 16px;
   top: 4px;
   visibility: visible; }
 .mdl-textfield--floating-label.is-focused .mdl-textfield__expandable-holder .mdl-textfield__label,
@@ -172,7 +169,6 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
   font-size: 12px; }
 .mdl-textfield__label:after {
   background-color: #009688;
-  bottom: 20px;
   content: '';
   height: 2px;
   left: 45%;
@@ -180,11 +176,12 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
   transition-duration: 0.2s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   visibility: hidden;
-  width: 10px; }
+  width: 100%; }
 .mdl-textfield.is-focused .mdl-textfield__label:after {
   left: 0;
   visibility: visible;
-  width: 90%; }
+  width: 100%;
+  bottom: 15px; }
 .mdl-textfield.is-invalid .mdl-textfield__label:after {
   background-color: rgb(213,0,0); }
 
@@ -207,7 +204,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
   height: 100%;
 }
 .mdl-textfield__input {
-  width: 90%;
+  width: 100%;
 }
 .mdl-card {
   display: -webkit-flex;
@@ -301,6 +298,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
 	}
 
 	@media (min-width: 480px) and (max-width: 839px) {
+  .mdl-cell--hide-tablet {
+    display: none !important; }
 	.mdl-cell--1-col,
 	.mdl-cell--1-col-tablet.mdl-cell--1-col-tablet {
 		width: 8.3333333333%; }
@@ -339,7 +338,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
 		width: 100%; }
 }
 
-@media (min-width: 840px) {
+@media (min-width: 840px) and (max-width: 1439px) {
   .mdl-cell--1-col,
   .mdl-cell--1-col-desktop.mdl-cell--1-col-desktop {
     width: 8.3333333333%; }
@@ -375,5 +374,44 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label,
     width: 91.6666666667%; }
   .mdl-cell--12-col,
   .mdl-cell--12-col-desktop.mdl-cell--12-col-desktop {
+    width: 100%; }
+}
+
+@media (min-width: 1440px) {
+  .mdl-cell--1-col,
+  .mdl-cell--1-col-extra-large.mdl-cell--1-col-extra-large {
+    width: 8.3333333333%; }
+  .mdl-cell--2-col,
+  .mdl-cell--2-col-extra-large.mdl-cell--2-col-extra-large {
+    width: 16.6666666667%; }
+  .mdl-cell--3-col,
+  .mdl-cell--3-col-extra-large.mdl-cell--3-col-extra-large {
+    width: 25%; }
+  .mdl-cell--4-col,
+  .mdl-cell--4-col-extra-large.mdl-cell--4-col-extra-large {
+    width: 33.3333333333%; }
+  .mdl-cell--5-col,
+  .mdl-cell--5-col-extra-large.mdl-cell--5-col-extra-large {
+    width: 41.6666666667%; }
+  .mdl-cell--6-col,
+  .mdl-cell--6-col-extra-large.mdl-cell--6-col-extra-large {
+    width: 50%; }
+  .mdl-cell--7-col,
+  .mdl-cell--7-col-extra-large.mdl-cell--7-col-extra-large {
+    width: 58.3333333333%; }
+  .mdl-cell--8-col,
+  .mdl-cell--8-col-extra-large.mdl-cell--8-col-extra-large {
+    width: 66.6666666667%; }
+  .mdl-cell--9-col,
+  .mdl-cell--9-col-extra-large.mdl-cell--9-col-extra-large {
+    width: 75%; }
+  .mdl-cell--10-col,
+  .mdl-cell--10-col-extra-large {
+    width: 83.3333333333%; }
+  .mdl-cell--11-col,
+  .mdl-cell--11-col-extra-large.mdl-cell--11-col-extra-large {
+    width: 91.6666666667%; }
+  .mdl-cell--12-col,
+  .mdl-cell--12-col-extra-large.mdl-cell--12-col-extra-large {
     width: 100%; }
 }

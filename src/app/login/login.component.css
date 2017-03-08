@@ -19,6 +19,9 @@
 .text-center {
   text-align: center;
 }
+.container-space {
+  padding: 2rem 0;
+}
 .container-center {
   width: 90%;
   margin-left: auto;
@@ -47,6 +50,9 @@
   width: 40%;
   margin: 0 auto;
   padding: 20px 0;
+}
+.padding {
+  padding: 1rem 0;
 }
 .cursor {
   cursor: pointer;
@@ -93,11 +99,8 @@
   .small-text {
     font-size: 12px;
   }
-  .main-container {
-    padding: 0 2rem;
-  }
-  .parcial-height {
-    height: 80%;
+  .full-height {
+    height: 100%;
   }
 }
 
@@ -110,8 +113,8 @@
   .main-container {
     padding: 0 2rem;
   }
-  .parcial-height {
-    height: 80%;
+  .full-height {
+    height: 90%;
   }
   .extra-large-text {
     font-size: 42px;

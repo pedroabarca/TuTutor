@@ -1,38 +1,38 @@
 <mdl-layout>
   <mdl-layout-content>
     <div class="mdl-grid main-container">
-      <div class="mdl-cell mdl-cell--8-col-desktop mdl-cell--8-col-tablet mdl-cell--hide-phone text-center">
+      <div class="mdl-cell--9-col-extra-large mdl-cell mdl-cell--8-col-desktop mdl-cell--hide-phone mdl-cell--hide-tablet text-center">
         <div class="vertical-align vertical-space">
           <img src="assets/img/logo.png">
           <h2 class="extra-large-text">¡Bienvenido a tu Tututor!</h2>
           <h4 class="medium-text">Conseguir un tutor nunca ha sido tan fácil</h4>
         </div>
       </div>
-      <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--4-col-tablet mdl-cell--12-col-phone">
+      <div class="mdl-cell--3-col-extra-large mdl-cell mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <mdl-card class="vertical-align full-height parcial-height" mdl-shadow="4">
           <mdl-card-title class="background-primary color-white">
             <h2 mdl-card-title-text class="extra-large-text container-center">Acceder</h2>
           </mdl-card-title>
           <mdl-card-supporting-text class="text-center">
             <form>
-              <div class="mdl-grid">
+              <div class="mdl-grid container-space">
                 <div class="mdl-cell--2-col input-icon">
                   <span class="text-color"><i class="material-icons">email</i></span>
                 </div>
                 <div class="mdl-cell--10-col">
-                  <mdl-textfield type="email" label="Correo electrónico" floating-label name="email"></mdl-textfield>
+                  <mdl-textfield type="email" label="Correo electrónico" floating-label name="email" [(ngModel)]="user.email"></mdl-textfield>
                 </div>
                 <div class="mdl-cell--2-col input-icon">
                   <span class="text-color"><i class="material-icons">lock</i></span>
                 </div>
                 <div class="mdl-cell--10-col">
-                  <mdl-textfield type="password" label="Contraseña" floating-label name="password"></mdl-textfield>
+                  <mdl-textfield type="password" label="Contraseña" floating-label name="password" [(ngModel)]="user.password"></mdl-textfield>
                 </div>
                 <div class="icon-container">
-                  <img src="assets/img/facebook.png" class="right cursor">
+                  <img src="assets/img/facebook.png" class="right cursor" (click)="facebookAuth()">
                 </div>
                 <div class="icon-container">
-                  <img src="assets/img/google.png" class="left cursor">
+                  <img src="assets/img/google.png" class="left cursor" (click)="googleAuth()">
                 </div>
                 <div class="icon-container">
                   <button mdl-button mdl-ripple class="color-primary background-hover small-text">
@@ -40,11 +40,11 @@
                   </button>
                 </div>
                 <div class="icon-container">
-                  <button mdl-button mdl-ripple class="background-primary background-hover color-white small-text">
+                  <button mdl-button mdl-ripple class="background-primary background-hover color-white small-text" (click)="emailAuth()">
                     Iniciar sesión
                   </button>
                 </div>
-                <p class="color-primary text-center full-width cursor">¿Olvidaste tu contraseña?</p>
+                <p class="color-primary text-center full-width cursor" (click)="signOut()">¿Olvidaste tu contraseña?</p>
               </div>
             </form>
           </mdl-card-supporting-text>
@@ -53,3 +53,4 @@
     </div>
   </mdl-layout-content>
 </mdl-layout>
+<router-outlet></router-outlet>
