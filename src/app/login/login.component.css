@@ -1,44 +1,65 @@
 :host {
   color: white;
 }
-.material-icons {
-  color: #009688;
-}
-.input-icon {
-  padding: 20px 0;
-}
-.main-container {
-  background: #ffd003;
+.mdl-layout {
+  height: 100%;
 }
 .mdl-layout__container {
   height: 100%;
 }
-.mdl-layout {
+.mdl-layout__content {
+  height: 100%;
+}
+.main-container {
+  background: #ffd003;
+  display: flex;
+  height: 100%;
+}
+.full-height {
   height: 100%;
 }
 .text-center {
   text-align: center;
 }
-.container-space {
-  padding: 2rem 0;
-}
-.container-center {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.color-primary {
-  color: #009688;
-}
-.color-white {
-  color: white;
+.background-primary {
+  background-color: #009688;
 }
 .background-primary {
   background-color: #009688;
 }
-.background-hover:hover {
-  background-color: #00897B;
+.color-white {
   color: white;
+}
+.icon-container {
+  width: 40%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.input-icon {
+  padding: 20px 0;
+}
+.container-space {
+  padding: 1rem 0;
+}
+.color-primary {
+  color: #009688;
+}
+.text-center {
+  text-align: center;
+}
+.input-container {
+  width: 90%;
+  margin: 0 auto;
+}
+.full-width {
+  width: 100%;
+}
+.cursor {
+  cursor: pointer;
+}
+.mdl-card__supporting-text {
+  width: 100%;
+  padding: 0;
 }
 .right {
   float: right;
@@ -46,46 +67,9 @@
 .left {
   float: left;
 }
-.icon-container {
-  width: 40%;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-.padding {
-  padding: 1rem 0;
-}
-.cursor {
-  cursor: pointer;
-}
-.vertical-space {
-  line-height: 0.5rem;
-}
-.full-width {
-  width: 100%;
-}
-@media (max-width: 479px) {
-  .full-height {
-    height: 100%;
-  }
-  .extra-large-text {
-    font-size: 32px;
-  }
-  .large-text {
-    font-size: 16px;
-  }
-  .medium-text {
-    font-size: 12px;
-  }
-  .small-text {
-    font-size: 12px;
-  }
-}
-
 @media (min-width: 480px) and (max-width: 839px) {
-  .vertical-align {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  .icon-container {
+    width: 45%;
   }
   .extra-large-text {
     font-size: 32px;
@@ -101,6 +85,9 @@
   }
   .full-height {
     height: 100%;
+  }
+  .mdl-button {
+    width: 90%;
   }
 }
 
@@ -126,6 +113,6 @@
     font-size: 24px;
   }
   .small-text {
-    font-size: 16px;
+    font-size: 14px;
   }
 }

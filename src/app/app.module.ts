@@ -1,11 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { AngularFireModule } from 'angularfire2';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MdlModule } from 'angular2-mdl';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { APP_BASE_HREF } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { MdlModule } from 'angular2-mdl';
 
-import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
+
+import { LoginModule } from './login/login.module';
+import { HomeModule } from './home/home.module';
 
 export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyD2cLxr5v0oASEZcasQ1Bh4eUhbxZ8_9N4",
@@ -17,12 +23,12 @@ export const FIREBASE_CONFIG = {
 
 @NgModule({
   declarations: [
-    LoginComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, MdlModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, HomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   providers: [],
-  bootstrap: [LoginComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

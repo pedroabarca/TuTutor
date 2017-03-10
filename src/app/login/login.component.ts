@@ -1,15 +1,16 @@
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+import { Subscription } from "rxjs/Subscription";
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { User } from '../models/user';
 
 @Component({
-	moduleId: module.id,
+  moduleId: module.id,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit, OnDestroy {
 
 	authSubscription:Subscription;
@@ -23,9 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth =>
         {
-          console.log(auth);
           if(auth !== null)
-            this.postSignIn
+            this.postSignIn();
         }
     );
   }
