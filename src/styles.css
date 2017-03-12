@@ -4,6 +4,22 @@ html, body {
   padding: 0;
   height: 100%;
 }
+.mdl-layout {
+  height: 100%;
+}
+.mdl-layout__container {
+  height: 100%;
+}
+.mdl-layout__content {
+  height: 100%;
+}
+.background-primary {
+  background-color: #009688;
+}
+.color-primary {
+  color: #009688;
+}
+
 .mdl-textfield__label:after {
   background-color: #009688;
 }
@@ -139,8 +155,15 @@ html, body {
 }
 
 @media screen and (max-width: 1024px) {
-  .mdl-layout__header {
-    min-height: 56px; } }
+  .mdl-layout__drawer-button {
+    color: white } }
+@media screen and (min-width: 1025px) {
+  .mdl-layout__drawer {
+    width: 20%; }
   .mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
-    margin: 0;
-    width: 100% }
+    width: 80%;
+    margin-left: 20%; }
+  .mdl-layout--fixed-drawer > .mdl-layout__content {
+    width: 80%;
+    margin-left: 20%;
+  } }

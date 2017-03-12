@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from 'rxjs/Subscription';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { User } from '../models/user';
 
@@ -13,7 +13,8 @@ import { User } from '../models/user';
 
 export class LoginComponent implements OnInit, OnDestroy {
 
-	authSubscription:Subscription;
+  authSubscription:Subscription;
+  userInfoSubscription:Subscription;
   user:User;
 
   constructor(private angularFire:AngularFire, private router:Router) {
@@ -21,16 +22,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authSubscription = this.angularFire.auth.subscribe(
-      auth =>
-        {
-          if(auth !== null)
-            this.postSignIn();
-        }
-    );
+    this.subscribe();
   }
   ngOnDestroy():void {
+    this.unsubscribe();
+  }
+  subscribe():void {
+    this.authSubscription = this.angularFire.auth.subscribe(
+      auth => {
+        if(auth !== null)
+          this.postSignIn(auth);
+      }
+    );
+  }
+  unsubscribe():void {
     this.authSubscription.unsubscribe();
+    this.userInfoSubscription.unsubscribe();
   }
   emailAuth():void {
     this.angularFire.auth.login({
@@ -54,8 +61,23 @@ export class LoginComponent implements OnInit, OnDestroy {
       method: AuthMethods.Popup
     }).then(() => { this.postSignIn })
   }
-  postSignIn():void {
-    this.router.navigateByUrl('home');
+  postSignIn(auth:any):void {
+    this.checkUserPermissions(auth);
+  }
+  checkUserPermissions(auth:any):void {
+    let url = '/users/' + auth.uid;
+    let user = this.angularFire.database.object(url);
+    this.userInfoSubscription = user.subscribe(snapshot => {
+      this.nextPage(snapshot.is_admin, snapshot.is_tutor);
+    });
+  }
+  nextPage(isAdmin:boolean, isTutor:boolean):void {
+    if(isAdmin)
+      this.router.navigateByUrl('admin/home');
+    else if(isTutor)
+      this.router.navigateByUrl('tutor/home');
+    else
+      this.router.navigateByUrl('student/home');
   }
   signOut():void {
     this.angularFire.auth.logout();

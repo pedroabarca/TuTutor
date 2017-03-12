@@ -10,23 +10,26 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+/* Import our classes modules */
 import { LoginModule } from './login/login.module';
-import { HomeModule } from './home/home.module';
+import { AdminHomeModule } from './admin/admin-home/admin-home.module';
+import { TutorHomeModule } from './tutor/tutor-home/tutor-home.module';
+import { StudentHomeModule } from './student/student-home/student-home.module';
 
 export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyD2cLxr5v0oASEZcasQ1Bh4eUhbxZ8_9N4",
-  authDomain: "tutorias-56a56.firebaseapp.com",
-  databaseURL: "https://tutorias-56a56.firebaseio.com",
-  storageBucket: "tutorias-56a56.appspot.com",
-  messagingSenderId: "267431761911"
+  apiKey: 'AIzaSyD2cLxr5v0oASEZcasQ1Bh4eUhbxZ8_9N4',
+  authDomain: 'tutorias-56a56.firebaseapp.com',
+  databaseURL: 'https://tutorias-56a56.firebaseio.com',
+  storageBucket: 'tutorias-56a56.appspot.com',
+  messagingSenderId: '267431761911'
 };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, HomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   providers: [],
   bootstrap: [AppComponent]

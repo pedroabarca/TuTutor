@@ -1,15 +1,6 @@
 :host {
   color: white;
 }
-.mdl-layout {
-  height: 100%;
-}
-.mdl-layout__container {
-  height: 100%;
-}
-.mdl-layout__content {
-  height: 100%;
-}
 .main-container {
   background: #ffd003;
   display: flex;
@@ -21,28 +12,19 @@
 .text-center {
   text-align: center;
 }
-.background-primary {
-  background-color: #009688;
-}
-.background-primary {
-  background-color: #009688;
-}
 .color-white {
   color: white;
 }
 .icon-container {
   width: 40%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 1rem 0;
 }
 .input-icon {
-  padding: 20px 0;
+  padding: 1.5rem 0;
 }
 .container-space {
   padding: 1rem 0;
-}
-.color-primary {
-  color: #009688;
 }
 .text-center {
   text-align: center;

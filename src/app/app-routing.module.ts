@@ -1,5 +1,7 @@
 import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { TutorHomeComponent } from './tutor/tutor-home/tutor-home.component';
+import { StudentHomeComponent } from './student/student-home/student-home.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +9,9 @@ import { NgModule } from '@angular/core';
   imports: [
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
-      { path: 'home', component: HomeComponent }
+      { path: 'admin/home', component: AdminHomeComponent },
+      { path: 'tutor/home', component: TutorHomeComponent },
+      { path: 'student/home', component: StudentHomeComponent }
     ])
   ],
   exports: [RouterModule]

@@ -1,0 +1,25 @@
+<mdl-layout mdl-layout-fixed-header mdl-layout-fixed-drawer>
+  <mdl-layout-header class="background-primary">
+    <mdl-layout-header-row>
+      <mdl-layout-spacer></mdl-layout-spacer>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation">
+        <button mdl-button #btn1="mdlButton" (click)="m1.toggle($event, btn1)" mdl-button-type="icon" mdl-ripple><img [src]="user.photoUrl" class="circle"></button>
+        <mdl-menu #m1="mdlMenu" mdl-menu-position="bottom-right">
+           <mdl-menu-item mdl-ripple (click)="signOut()">Cerrar sesión</mdl-menu-item>
+        </mdl-menu>
+      </nav>
+    </mdl-layout-header-row>
+  </mdl-layout-header>
+  <mdl-layout-drawer class="color-text">
+    <mdl-layout-title class="large-text">Tututor</mdl-layout-title>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link">Home</a>
+    </nav>
+  </mdl-layout-drawer>
+  <mdl-layout-content>
+    <div class="mdl-grid align-center">
+      <p>Student home works</p>
+    </div>
+  </mdl-layout-content>
+</mdl-layout>
