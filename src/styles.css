@@ -115,7 +115,7 @@ html, body {
   .mdl-cell--12-col-tablet.mdl-cell--12-col-tablet {
     width: 100%; }
 }
-@media (min-width: 840px) {
+@media (min-width: 840px) and (max-width: 1239px) {
   .mdl-cell--1-col,
   .mdl-cell--1-col-desktop.mdl-cell--1-col-desktop {
     width: 8.3333333333%; }
@@ -152,6 +152,45 @@ html, body {
   .mdl-cell--12-col,
   .mdl-cell--12-col-desktop.mdl-cell--12-col-desktop {
     width: 100%; }
+}
+
+@media (min-width: 1240px) {
+  .mdl-cell--1-col,
+  .mdl-cell--1-col-xl.mdl-cell--1-col-xl {
+    width: 8.3333333333% !important; }
+  .mdl-cell--2-col,
+  .mdl-cell--2-col-xl.mdl-cell--2-col-xl {
+    width: 16.6666666667% !important; }
+  .mdl-cell--3-col,
+  .mdl-cell--3-col-xl.mdl-cell--3-col-xl {
+    width: 25% !important; }
+  .mdl-cell--4-col,
+  .mdl-cell--4-col-xl.mdl-cell--4-col-xl {
+    width: 33.3333333333% !important; }
+  .mdl-cell--5-col,
+  .mdl-cell--5-col-xl.mdl-cell--5-col-xl {
+    width: 41.6666666667% !important; }
+  .mdl-cell--6-col,
+  .mdl-cell--6-col-xl.mdl-cell--6-col-xl {
+    width: 50% !important; }
+  .mdl-cell--7-col,
+  .mdl-cell--7-col-xl.mdl-cell--7-col-xl {
+    width: 58.3333333333% !important; }
+  .mdl-cell--8-col,
+  .mdl-cell--8-col-xl.mdl-cell--8-col-xl {
+    width: 66.6666666667% !important; }
+  .mdl-cell--9-col,
+  .mdl-cell--9-col-xl.mdl-cell--9-col-xl {
+    width: 75% !important; }
+  .mdl-cell--10-col,
+  .mdl-cell--10-col-xl.mdl-cell--10-col-xl {
+    width: 83.3333333333% !important; }
+  .mdl-cell--11-col,
+  .mdl-cell--11-col-xl.mdl-cell--11-col-xl {
+    width: 91.6666666667% !important; }
+  .mdl-cell--12-col,
+  .mdl-cell--12-col-xl.mdl-cell--12-col-xl {
+    width: 100% !important; }
 }
 
 @media screen and (max-width: 1024px) {

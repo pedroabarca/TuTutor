@@ -15,6 +15,9 @@
 .color-white {
   color: white;
 }
+.flex-container {
+  display: flex;
+}
 .icon-container {
   width: 40%;
   margin: 0 auto;
@@ -43,11 +46,11 @@
   width: 100%;
   padding: 0;
 }
-.right {
-  float: right;
+.list-no-style {
+  list-style: none;
 }
-.left {
-  float: left;
+.list-items {
+  width: 20%;
 }
 @media (min-width: 480px) and (max-width: 839px) {
   .icon-container {
