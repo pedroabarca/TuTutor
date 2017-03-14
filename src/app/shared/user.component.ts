@@ -2,18 +2,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFire } from 'angularfire2';
+import { MdlSnackbarService } from 'angular2-mdl';
 import { User } from '../models/user';
+import { BaseComponent } from './base.component';
 
 @Component({
   selector: 'app-user',
 })
 
-export class UserComponent implements OnInit, OnDestroy {
+export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
 
   authSubscription:Subscription;
   user:User;
 
-  constructor(protected angularFire:AngularFire, protected router:Router) {
+  constructor(protected angularFire:AngularFire, protected router:Router, protected snackBar:MdlSnackbarService) {
+    super(snackBar);
     this.user = new User();
   }
   ngOnInit() {

@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 
 /* Import our classes modules */
 import { LoginModule } from './login/login.module';
+import { RegisterModule } from './register/register.module';
 import { AdminHomeModule } from './admin/admin-home/admin-home.module';
 import { TutorHomeModule } from './tutor/tutor-home/tutor-home.module';
 import { StudentHomeModule } from './student/student-home/student-home.module';
@@ -29,7 +30,7 @@ export const FIREBASE_CONFIG = {
     AppComponent,
   ],
   imports: [
-    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, RegisterModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   providers: [],
   bootstrap: [AppComponent]
