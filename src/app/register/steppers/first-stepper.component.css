@@ -1,0 +1,59 @@
+:host {
+  height: 100%;
+  display: block;
+}
+.mdl-card {
+  width: 100%;
+}
+.full-width {
+  width: 100%;
+}
+.color-white {
+  color: white;
+}
+.cursor {
+  cursor: pointer;
+}
+.text-center {
+  text-align: center;
+}
+.mdl-card__supporting-text {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+}
+@media (min-width: 480px) and (max-width: 839px) {
+  .extra-large-text {
+    font-size: 32px;
+  }
+  .large-text {
+    font-size: 24px;
+  }
+  .medium-text {
+    font-size: 16px;
+  }
+  .small-text {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 840px) {
+  .vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .extra-large-text {
+    font-size: 42px;
+  }
+  .large-text {
+    font-size: 32px;
+  }
+  .medium-text {
+    font-size: 24px;
+  }
+  .small-text {
+    font-size: 14px;
+  }
+}

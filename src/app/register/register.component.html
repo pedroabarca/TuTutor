@@ -11,15 +11,15 @@
       <div class="mdl-cell--3-col-xl mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <mdl-card class="vertical-align full-width full-height" mdl-shadow="4">
         <mdl-card-title class="background-primary color-white">
-          <ul class="full-width flex-container color-white list-no-style">
-            <li class="medium-text list-items cursor text-center">ᗧ</li>
-            <li class="medium-text list-items cursor text-center">ᗧ</li>
-            <li class="medium-text list-items cursor text-center">ᗧ</li>
-            <li class="medium-text list-items cursor text-center">ᗧ</li>
-            <li class="medium-text list-items cursor text-center">ᗧ</li>
-          </ul>
+          <nav class="full-width flex-container">
+            <a class="medium-text list-items text-center link-no-style" routerLink="/register" routerLinkActive="active">ᗧ</a>
+            <a class="medium-text list-items text-center link-no-style" routerLink="/register/email" routerLinkActive="active">ᗧ</a>
+            <a class="medium-text list-items text-center link-no-style" routerLink="/register/name" routerLinkActive="active">ᗧ</a>
+            <a class="medium-text list-items text-center link-no-style" routerLink="/register/country" routerLinkActive="active">ᗧ</a>
+            <a class="medium-text list-items text-center link-no-style" routerLink="/register/tutor" routerLinkActive="active">ᗧ</a>
+          </nav>
         </mdl-card-title>
-        <first-stepper></first-stepper>
+        <router-outlet></router-outlet>
       </mdl-card>
       </div>
     </div>
