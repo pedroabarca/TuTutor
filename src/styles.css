@@ -28,7 +28,7 @@ html, body {
 .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
   color: #009688; }
 @media (max-width: 479px) {
-    .mdl-cell--1-col,
+  .mdl-cell--1-col,
   .mdl-cell--1-col-phone.mdl-cell--1-col-phone {
     width: 8.3333333333%; }
   .mdl-cell--2-col,

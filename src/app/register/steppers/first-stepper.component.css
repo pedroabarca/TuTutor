@@ -1,12 +1,15 @@
 :host {
   height: 100%;
-  display: block;
+  text-align: center;
 }
 .mdl-card {
   width: 100%;
 }
 .full-width {
   width: 100%;
+}
+.full-height {
+  height: 100%;
 }
 .color-white {
   color: white;
@@ -17,6 +20,8 @@
 .text-center {
   text-align: center;
 }
+.mdl-button:hover {
+  background-color: #004D40 }
 .mdl-card__supporting-text {
   width: 90%;
   margin: 0 auto;
@@ -24,15 +29,6 @@
   padding: 0;
 }
 @media (min-width: 480px) and (max-width: 839px) {
-  .extra-large-text {
-    font-size: 32px;
-  }
-  .large-text {
-    font-size: 24px;
-  }
-  .medium-text {
-    font-size: 16px;
-  }
   .small-text {
     font-size: 12px;
   }
@@ -43,15 +39,6 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-  }
-  .extra-large-text {
-    font-size: 42px;
-  }
-  .large-text {
-    font-size: 32px;
-  }
-  .medium-text {
-    font-size: 24px;
   }
   .small-text {
     font-size: 14px;

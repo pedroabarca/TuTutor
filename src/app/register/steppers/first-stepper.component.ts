@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'first-stepper',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./first-stepper.component.css']
 })
 
-export class FirstStepperComponent { }
+export class FirstStepperComponent {
+
+  constructor(private router:Router) {}
+
+  nextStepper():void {
+    this.router.navigateByUrl('register/first-name');
+  }
+}

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFire } from 'angularfire2';
 import { MdlSnackbarService } from 'angular2-mdl';
-import { User } from '../models/user';
 import { BaseComponent } from './base.component';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-auth',
