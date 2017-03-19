@@ -13,9 +13,7 @@ export class FirstNameStepperComponent implements OnInit {
 
   firstName:string;
 
-  constructor(private router:Router, private userService:UserService) {
-    this.firstName = '';
-  }
+  constructor(private router:Router, private userService:UserService) {}
 
   ngOnInit() {
     this.getUserProperties();
@@ -25,7 +23,6 @@ export class FirstNameStepperComponent implements OnInit {
   }
   setUserProperties():void {
     this.userService.setFirstName(this.firstName);
-    this.userService.userHasChanged();
   }
   nextStepper():void {
     this.setUserProperties();

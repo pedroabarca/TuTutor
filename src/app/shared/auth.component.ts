@@ -12,7 +12,7 @@ import { User } from '../models/user';
 
 export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
 
-  errors = {'auth/user-not-found': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/wrong-password': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/invalid-email': { value: 'Formato de correo electrónico incorrecto' } };
+  errors = {'auth/user-not-found': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/wrong-password': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/invalid-email': { value: 'Formato de correo electrónico incorrecto' }, 'auth/email-already-in-use': { value: 'Este correo electrónico ya está siendo utilizado' } };
   authSubscription:Subscription;
   userInfoSubscription:Subscription;
   user:User;
@@ -47,7 +47,7 @@ export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {
-      this.nextPage(snapshot.is_admin, snapshot.is_tutor);
+      this.nextPage(snapshot.isAdmin, snapshot.isTutor);
     });
   }
   nextPage(isAdmin:boolean, isTutor:boolean):void {

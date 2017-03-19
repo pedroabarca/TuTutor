@@ -26,7 +26,7 @@ export class TutorComponent extends UserComponent {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {
-      if(!snapshot.is_tutor) this.router.navigateByUrl('');
+      if(!snapshot.isTutor) this.router.navigateByUrl('');
     });
   }
   unsubscribe():void {

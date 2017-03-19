@@ -16,16 +16,16 @@
           <mdl-card-supporting-text class="text-center">
             <form>
               <div class="mdl-grid container-space">
-                <div class="mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--2-col-phone input-icon">
+                <div class="mdl-cell--2-col-xl mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--2-col-phone input-icon">
                   <span class="text-color"><i class="material-icons color-primary">email</i></span>
                 </div>
-                <div class="mdl-cell--10-col-desktop mdl-cell--11-col-tablet mdl-cell--10-col-phone">
+                <div class="mdl-cell--10-col-xl mdl-cell--10-col-desktop mdl-cell--11-col-tablet mdl-cell--10-col-phone">
                   <mdl-textfield class="input-container" type="email" label="Correo electrónico" floating-label name="email" [(ngModel)]="user.email"></mdl-textfield>
                 </div>
-                <div class="mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--2-col-phone input-icon">
+                <div class="mdl-cell--2-col-xl mdl-cell--2-col-desktop mdl-cell--1-col-tablet mdl-cell--2-col-phone input-icon">
                   <span class="text-color"><i class="material-icons color-primary">lock</i></span>
                 </div>
-                <div class="mdl-cell--10-col-desktop mdl-cell--11-col-tablet mdl-cell--10-col-phone">
+                <div class="mdl-cell--10-col-xl mdl-cell--10-col-desktop mdl-cell--11-col-tablet mdl-cell--10-col-phone">
                   <mdl-textfield class="input-container" type="password" label="Contraseña" floating-label name="password" [(ngModel)]="user.password"></mdl-textfield>
                 </div>
                 <div class="icon-container">
@@ -35,12 +35,12 @@
                   <img src="assets/img/google.png" class="left cursor" (click)="googleAuth()">
                 </div>
                 <div class="icon-container">
-                  <button mdl-button mdl-ripple class="color-primary background-hover small-text" (click)="register()">
+                  <button mdl-button mdl-ripple type="button" class="color-primary background-hover small-text" (click)="register()">
                     Registrarse
                   </button>
                 </div>
                 <div class="icon-container">
-                  <button mdl-button mdl-ripple class="background-primary background-hover color-white small-text" (click)="emailAuth()">
+                  <button mdl-button mdl-ripple type="submit" class="background-primary background-hover color-white small-text" (click)="emailAuth()">
                     Iniciar sesión
                   </button>
                 </div>

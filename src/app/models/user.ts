@@ -8,5 +8,8 @@ export class User {
   isAdmin:boolean;
   isTutor:boolean;
 
-  constructor() {}
+  constructor() {
+    this.isAdmin = false;
+    this.isTutor = false;
+  }
 }

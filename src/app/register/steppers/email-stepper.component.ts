@@ -15,10 +15,7 @@ export class EmailStepperComponent implements OnInit {
   lastName:string;
   email:string;
 
-  constructor(private router:Router, private userService:UserService) {
-    this.firstName = '';
-    this.lastName = '';
-  }
+  constructor(private router:Router, private userService:UserService) {}
 
   ngOnInit() {
     this.getUserProperties();
@@ -30,7 +27,6 @@ export class EmailStepperComponent implements OnInit {
   }
   setUserProperties():void {
     this.userService.setEmail(this.email);
-    this.userService.userHasChanged();
   }
   nextStepper():void {
     this.setUserProperties();

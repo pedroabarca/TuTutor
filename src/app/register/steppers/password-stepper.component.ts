@@ -16,11 +16,7 @@ export class PasswordStepperComponent implements OnInit {
   email:string;
   password:string;
 
-  constructor(private router:Router, private userService:UserService) {
-    this.firstName = '';
-    this.lastName = '';
-    this.email = '';
-  }
+  constructor(private router:Router, private userService:UserService) {}
 
   ngOnInit() {
     this.getUserProperties();
@@ -33,7 +29,7 @@ export class PasswordStepperComponent implements OnInit {
   }
   setUserProperties():void {
     this.userService.setPassword(this.password);
-    this.userService.userHasChanged();
+    this.userService.registerHasFinished();
   }
   nextStepper():void {
     this.setUserProperties();

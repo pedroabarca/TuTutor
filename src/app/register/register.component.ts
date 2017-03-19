@@ -27,12 +27,29 @@ export class RegisterComponent extends AuthComponent {
           this.postSignIn(auth);
       }
     );
-    this.userChangesSubscription = this.userService.userChange$.subscribe(
+    this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
-        console.log(user);
         this.user = user;
+        this.createUser();
       }
     );
+  }
+  createUser():void {
+    this.angularFire.auth.createUser({
+      email: this.user.email,
+      password: this.user.password
+    })
+    .then((response) => { this.createUserRecord(response.uid) })
+    .catch((error:any) => { this.showErrorMessage(error.code) });
+  }
+  createUserRecord(userId:string):void {
+    let users = this.angularFire.database.list('/users');
+    users.update(userId, {
+      firstName: this.user.firstName,
+      isAdmin: this.user.isAdmin,
+      isTutor: this.user.isTutor,
+      lastName: this.user.lastName
+    });
   }
   unsubscribe():void {
     if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();

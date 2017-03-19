@@ -5,16 +5,16 @@ import { User } from '../models/user';
 @Injectable()
 export class UserService {
 
-  private userChange = new Subject<User>();
-  userChange$ = this.userChange.asObservable();
+  private isFinished = new Subject<User>();
+  isFinished$ = this.isFinished.asObservable();
   user:User;
 
   constructor() {
     this.user = new User();
   }
 
-  userHasChanged():void {
-    this.userChange.next(this.user);
+  registerHasFinished():void {
+    this.isFinished.next(this.user);
   }
   setEmail(email:string):void {
     this.user.email = email;

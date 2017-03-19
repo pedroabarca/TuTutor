@@ -14,9 +14,7 @@ export class LastNameStepperComponent implements OnInit {
   firstName:string;
   lastName:string;
 
-  constructor(private router:Router, private userService:UserService) {
-    this.lastName = '';
-  }
+  constructor(private router:Router, private userService:UserService) {}
 
   ngOnInit() {
     this.getUserProperties();
@@ -27,7 +25,6 @@ export class LastNameStepperComponent implements OnInit {
   }
   setUserProperties():void {
     this.userService.setLastName(this.lastName);
-    this.userService.userHasChanged();
   }
   nextStepper():void {
     this.setUserProperties();

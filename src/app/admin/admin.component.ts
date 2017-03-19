@@ -26,7 +26,7 @@ export class AdminComponent extends UserComponent {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {
-      if(!snapshot.is_admin) this.router.navigateByUrl('');
+      if(!snapshot.isAdmin) this.router.navigateByUrl('');
     });
   }
   unsubscribe():void {
