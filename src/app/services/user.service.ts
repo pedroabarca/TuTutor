@@ -18,6 +18,7 @@ export class UserService {
   }
   setEmail(email:string):void {
     this.user.email = email;
+    this.registerHasFinished();
   }
   getEmail():string {
     return this.user.email;

@@ -29,25 +29,26 @@ export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
     this.unsubscribe();
   }
   subscribe():void {
-    this.authSubscription = this.angularFire.auth.subscribe(
+    /*this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null)
           this.postSignIn(auth);
       }
-    );
+    );*/
   }
   unsubscribe():void {
     if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();
     if (this.userInfoSubscription !== undefined) this.userInfoSubscription.unsubscribe();
   }
   postSignIn(auth:any):void {
-    this.checkUserPermissions(auth);
+    this.verifyUserData(auth);
   }
-  checkUserPermissions(auth:any):void {
+  verifyUserData(auth:any) {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {
-      this.nextPage(snapshot.isAdmin, snapshot.isTutor);
+      if(snapshot.$value === undefined) this.nextPage(snapshot.isAdmin, snapshot.isTutor);
+      else if(snapshot.$value === null) this.router.navigateByUrl('register');
     });
   }
   nextPage(isAdmin:boolean, isTutor:boolean):void {
@@ -57,5 +58,8 @@ export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('tutor/home');
     else
       this.router.navigateByUrl('student/home');
+  }
+  signOut():void {
+    this.angularFire.auth.logout();
   }
 }

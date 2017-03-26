@@ -20,7 +20,7 @@ export class LoginComponent extends AuthComponent {
       provider: AuthProviders.Password,
       method: AuthMethods.Password,
     })
-    .then((() => { this.postSignIn }))
+    .then((auth:any) => { this.postSignIn(auth) })
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   googleAuth():void {
@@ -28,7 +28,7 @@ export class LoginComponent extends AuthComponent {
       provider: AuthProviders.Google,
       method: AuthMethods.Popup
     })
-    .then(() => { this.postSignIn })
+    .then((auth:any) => { this.postSignIn(auth) })
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   facebookAuth():void {
@@ -36,7 +36,7 @@ export class LoginComponent extends AuthComponent {
       provider: AuthProviders.Facebook,
       method: AuthMethods.Popup
     })
-    .then(() => { this.postSignIn })
+    .then((auth:any) => { this.postSignIn(auth) })
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   register():void {

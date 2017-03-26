@@ -16,13 +16,13 @@ export class AdminComponent extends UserComponent {
         if(auth === null)
           this.router.navigateByUrl('');
         else {
-          this.checkUserPermissions(auth);
+          this.verifyUserData(auth);
           this.setUserMetaData(auth);
         }
       }
     )
   }
-  checkUserPermissions(auth:any):void {
+  verifyUserData(auth:any):void {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {

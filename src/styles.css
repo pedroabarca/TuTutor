@@ -69,49 +69,37 @@ html, body {
   .mdl-cell--1-col,
   .mdl-cell--1-col-tablet.mdl-cell--1-col-tablet {
     width: 8.3333333333%; }
-  .mdl-grid--no-spacing > .mdl-cell--1-col, .mdl-grid--no-spacing >
-  .mdl-cell--1-col-tablet.mdl-cell--1-col-tablet {
-    width: 8.3333333333%; }
   .mdl-cell--2-col,
   .mdl-cell--2-col-tablet.mdl-cell--2-col-tablet {
     width: 16.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--2-col, .mdl-grid--no-spacing >
-  .mdl-cell--2-col-tablet.mdl-cell--2-col-tablet {
-    width: 16.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--3-col, .mdl-grid--no-spacing >
+  .mdl-cell--3-col,
   .mdl-cell--3-col-tablet.mdl-cell--3-col-tablet {
     width: 25%; }
-  .mdl-grid--no-spacing > .mdl-cell--4-col, .mdl-grid--no-spacing >
+  .mdl-cell--4-col,
   .mdl-cell--4-col-tablet.mdl-cell--4-col-tablet {
     width: 33.3333333333%; }
-  .mdl-grid--no-spacing > .mdl-cell--5-col, .mdl-grid--no-spacing >
+  .mdl-cell--5-col,
   .mdl-cell--5-col-tablet.mdl-cell--5-col-tablet {
     width: 41.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--6-col, .mdl-grid--no-spacing >
+  .mdl-cell--6-col,
   .mdl-cell--6-col-tablet.mdl-cell--6-col-tablet {
     width: 50%; }
-  .mdl-grid--no-spacing > .mdl-cell--7-col, .mdl-grid--no-spacing >
+  .mdl-cell--7-col,
   .mdl-cell--7-col-tablet.mdl-cell--7-col-tablet {
     width: 58.3333333333%; }
-  .mdl-grid--no-spacing > .mdl-cell--8-col, .mdl-grid--no-spacing >
+  .mdl-cell--8-col,
   .mdl-cell--8-col-tablet.mdl-cell--8-col-tablet {
     width: 66.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--9-col, .mdl-grid--no-spacing >
+  .mdl-cell--9-col,
   .mdl-cell--9-col-tablet.mdl-cell--9-col-tablet {
     width: 75%; }
   .mdl-cell--10-col,
   .mdl-cell--10-col-tablet.mdl-cell--10-col-tablet {
     width: 83.3333333333%; }
-  .mdl-grid--no-spacing > .mdl-cell--10-col, .mdl-grid--no-spacing >
-  .mdl-cell--10-col-tablet.mdl-cell--10-col-tablet {
-    width: 83.3333333333%; }
   .mdl-cell--11-col,
   .mdl-cell--11-col-tablet.mdl-cell--11-col-tablet {
     width: 91.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--11-col, .mdl-grid--no-spacing >
-  .mdl-cell--11-col-tablet.mdl-cell--11-col-tablet {
-    width: 91.6666666667%; }
-  .mdl-grid--no-spacing > .mdl-cell--12-col, .mdl-grid--no-spacing >
+  .mdl-cell--12-col,
   .mdl-cell--12-col-tablet.mdl-cell--12-col-tablet {
     width: 100%; }
 }

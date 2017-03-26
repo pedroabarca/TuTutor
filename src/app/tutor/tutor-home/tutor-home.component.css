@@ -12,7 +12,11 @@
   padding: 0;
   text-align: center;
 }
-
+.vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 @media (min-width: 480px) and (max-width: 839px) {
   .large-text {
     font-size: 24px;
@@ -23,4 +27,34 @@
   .large-text {
     font-size: 32px;
   }
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.btn-group {
+  position: relative;
+  display: inline-flex;
+}
+.event-editor-table {
+  margin-top: 10px;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 1px solid #eceeef;
+}
+
+.event-editor-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+}
+
+.event-editor-table th,
+.event-editor-table td {
+  padding: .75rem;
+  vertical-align: top;
+}
+
+.event-editor-table td {
+  border: 1px solid #eceeef;
 }

@@ -12,6 +12,6 @@ export class FirstStepperComponent {
   constructor(private router:Router) {}
 
   nextStepper():void {
-    this.router.navigateByUrl('register/first-name');
+    this.router.navigateByUrl('register/email');
   }
 }

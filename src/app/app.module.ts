@@ -29,7 +29,7 @@ export const FIREBASE_CONFIG = {
     AppComponent,
   ],
   imports: [
-    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, RegisterModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, RegisterModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG),
   ],
   providers: [],
   bootstrap: [AppComponent]

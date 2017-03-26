@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent
+} from 'angular-calendar';
 import { Subscription } from 'rxjs/Subscription';
 import { UserComponent } from '../shared/user.component';
 
@@ -9,6 +14,9 @@ import { UserComponent } from '../shared/user.component';
 export class TutorComponent extends UserComponent {
 
   userInfoSubscription:Subscription;
+  view:string = 'month';
+  viewDate: Date = new Date();
+  events = [];
 
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
@@ -16,13 +24,13 @@ export class TutorComponent extends UserComponent {
         if(auth === null)
           this.router.navigateByUrl('');
         else {
-          this.checkUserPermissions(auth);
+          this.verifyUserData(auth);
           this.setUserMetaData(auth);
         }
       }
     )
   }
-  checkUserPermissions(auth:any):void {
+  verifyUserData(auth:any):void {
     let url = '/users/' + auth.uid;
     let user = this.angularFire.database.object(url);
     this.userInfoSubscription = user.subscribe(snapshot => {

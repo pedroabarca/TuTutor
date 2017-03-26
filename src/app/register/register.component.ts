@@ -24,15 +24,22 @@ export class RegisterComponent extends AuthComponent {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null)
-          this.postSignIn(auth);
+          this.verifyUserData(auth);
       }
     );
     this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
         this.user = user;
-        this.createUser();
+        //this.createUser();
       }
     );
+  }
+  verifyUserData(auth:any):void {
+    console.log(auth);
+    if(auth.provider === 2)
+      this.userService.setEmail(auth.facebook.email);
+    else if(auth.provider === 3)
+      this.userService.setEmail(auth.google.email);
   }
   createUser():void {
     this.angularFire.auth.createUser({

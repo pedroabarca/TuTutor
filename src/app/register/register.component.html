@@ -11,15 +11,10 @@
       <div class="mdl-cell--3-col-xl mdl-cell--4-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
       <mdl-card class="vertical-align full-width full-height" mdl-shadow="4">
         <mdl-card-title class="background-primary color-white">
-          <nav class="full-width flex-container">
-            <a class="medium-text list-items text-center link-no-style" routerLink="/register" routerLinkActive="active">ᗧ</a>
-            <a class="medium-text list-items text-center link-no-style" routerLink="/register/first-name" routerLinkActive="active">ᗧ</a>
-            <a class="medium-text list-items text-center link-no-style" routerLink="/register/last-name" routerLinkActive="active">ᗧ</a>
-            <a class="medium-text list-items text-center link-no-style" routerLink="/register/email" routerLinkActive="active">ᗧ</a>
-            <a class="medium-text list-items text-center link-no-style" routerLink="/register/password" routerLinkActive="active">ᗧ</a>
-          </nav>
-        </mdl-card-title>
+            <h2 mdl-card-title-text class="extra-large-text">Registro</h2>
+          </mdl-card-title>
         <router-outlet></router-outlet>
+        <p class="color-primary text-center full-width cursor" (click)="signOut()">¿Olvidaste tu contraseña?</p>
       </mdl-card>
       </div>
     </div>

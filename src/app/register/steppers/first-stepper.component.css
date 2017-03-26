@@ -28,6 +28,9 @@
   display: block;
   padding: 0;
 }
+.mdl-button[disabled][disabled] {
+  cursor: pointer;
+}
 @media (min-width: 480px) and (max-width: 839px) {
   .small-text {
     font-size: 12px;

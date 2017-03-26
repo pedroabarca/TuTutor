@@ -21,3 +21,6 @@
   top: 25%;
   transform: translateY(-50%);
 }
+.mdl-button[disabled][disabled] {
+  cursor: pointer;
+}

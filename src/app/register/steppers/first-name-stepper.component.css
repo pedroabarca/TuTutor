@@ -9,7 +9,8 @@
   padding: 0;
 }
 .mdl-button:hover {
-  background-color: #004D40 }
+  background-color: #009688;
+}
 .color-white {
   color: white;
 }
@@ -20,4 +21,7 @@
   position: relative;
   top: 25%;
   transform: translateY(-50%);
+}
+.mdl-button[disabled][disabled] {
+  cursor: pointer;
 }

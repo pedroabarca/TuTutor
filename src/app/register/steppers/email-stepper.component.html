@@ -1,18 +1,19 @@
 <mdl-card-supporting-text class="full-height">
   <div class="vertical-align">
-    <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" value="{{firstName}}" disabled type="text" label="Nombre" floating-label name="firstName"></mdl-textfield>
-    </div>
-    <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" value="{{lastName}}" disabled type="text" label="Apellidos" floating-label name="lastName"></mdl-textfield>
-    </div>
-    <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" autofocus type="email" label="Correo electrónico" [(ngModel)]="email" floating-label name="email"></mdl-textfield>
-    </div>
-    <div class="mdl-cell--12-col" >
-      <button mdl-button mdl-ripple (click)="nextStepper()" class="background-primary background-hover color-white small-text">
-        Siguente
-      </button>
-    </div>
+    <form class="mdl-grid" [formGroup]="form">
+      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <mdl-textfield required class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" name="email" autofocus type="email" label="Correo electrónico" [(ngModel)]="email" formControlName="data" floating-label ></mdl-textfield>
+      </div>
+      <div class="mdl-cell--6-col">
+        <button  mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">
+          Anterior
+        </button>
+      </div>
+      <div class="mdl-cell--6-col">
+        <button mdl-button [disabled]="!form.valid" mdl-ripple (click)="nextStepper()" class="background-primary background-hover color-white small-text">
+          Siguente
+        </button>
+      </div>
+    </form>
   </div>
 </mdl-card-supporting-text>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { MdlModule } from 'angular2-mdl';
 import { UserService } from '../../services/user.service';
 
@@ -11,15 +12,25 @@ import { UserService } from '../../services/user.service';
 
 export class PasswordStepperComponent implements OnInit {
 
+  form:FormGroup;
   firstName:string;
   lastName:string;
   email:string;
   password:string;
 
-  constructor(private router:Router, private userService:UserService) {}
+  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
 
   ngOnInit() {
+    this.buildForm();
     this.getUserProperties();
+  }
+  buildForm():void {
+    this.form = this.formBuilder.group({
+      'data' : [this.firstName, [
+        Validators.required,
+        Validators.minLength(6),
+      ]]
+    });
   }
   getUserProperties():void {
     this.firstName = this.userService.getFirstName();
@@ -31,8 +42,11 @@ export class PasswordStepperComponent implements OnInit {
     this.userService.setPassword(this.password);
     this.userService.registerHasFinished();
   }
+  previousStepper():void {
+    this.router.navigateByUrl('register/last-name');
+  }
   nextStepper():void {
-    this.setUserProperties();
+    //this.setUserProperties();
     //this.router.navigateByUrl('register/email');
   }
 }

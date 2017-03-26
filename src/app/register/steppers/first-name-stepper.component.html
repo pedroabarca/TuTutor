@@ -1,12 +1,22 @@
 <mdl-card-supporting-text class="full-height">
   <div class="vertical-align">
-    <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-      <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" autofocus type="text" label="Nombre" [(ngModel)]="firstName" floating-label name="firstName"></mdl-textfield>
-    </div>
-    <div class="mdl-cell--12-col" >
-      <button mdl-button mdl-ripple (click)="nextStepper()" class="background-primary background-hover color-white small-text">
-        Siguente
-      </button>
-    </div>
+    <form class="mdl-grid" [formGroup]="form">
+      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required value="{{email}}" disabled type="email" label="Correo electrónico" floating-label name="email"></mdl-textfield>
+      </div>
+      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" autofocus type="text" label="Nombre" [(ngModel)]="firstName" formControlName="data" floating-label name="firstName"></mdl-textfield>
+      </div>
+      <div class="mdl-cell--6-col">
+        <button  mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">
+          Anterior
+        </button>
+      </div>
+      <div class="mdl-cell--6-col">
+        <button mdl-button [disabled]="!form.valid" mdl-ripple (click)="nextStepper()" class="background-primary background-hover color-white small-text">
+          Siguente
+        </button>
+      </div>
+    </form>
   </div>
 </mdl-card-supporting-text>
