@@ -1,10 +1,10 @@
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FirstStepperComponent } from './register/steppers/first-stepper.component';
-import { FirstNameStepperComponent } from './register/steppers/first-name-stepper.component';
-import { LastNameStepperComponent } from './register/steppers/last-name-stepper.component';
-import { EmailStepperComponent } from './register/steppers/email-stepper.component';
-import { PasswordStepperComponent } from './register/steppers/password-stepper.component';
+import { IntroStepperComponent } from './register/steppers/intro/intro-stepper.component';
+import { FirstNameStepperComponent } from './register/steppers/first-name/first-name-stepper.component';
+import { LastNameStepperComponent } from './register/steppers/last-name/last-name-stepper.component';
+import { EmailStepperComponent } from './register/steppers/email/email-stepper.component';
+import { PasswordStepperComponent } from './register/steppers/password/password-stepper.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { TutorHomeComponent } from './tutor/tutor-home/tutor-home.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
@@ -18,7 +18,7 @@ import { NgModule } from '@angular/core';
       { path: 'register', component: RegisterComponent,
         children: [
           {
-            path: '', component: FirstStepperComponent
+            path: '', component: IntroStepperComponent
           },
           {
             path: 'first-name', component: FirstNameStepperComponent

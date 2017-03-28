@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MdlModule } from 'angular2-mdl';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'email-stepper',
@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./email-stepper.component.css']
 })
 
-export class EmailStepperComponent implements OnInit {
+export class EmailStepperComponent implements OnInit, OnDestroy {
 
   form:FormGroup;
   userChangesSubscription:Subscription;
@@ -34,16 +34,16 @@ export class EmailStepperComponent implements OnInit {
       }
     );
   }
+  unsubscribe():void {
+    if(this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
+  }
   buildForm():void {
     this.form = this.formBuilder.group({
       'data' : [this.email, [
         Validators.required,
-        Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$')
+        Validators.pattern('[a-z]+(.[_a-z0-9]+)*@[a-z0-9-]+(.[a-z0-9-]+)*.([a-z]{2,15})')
       ]]
     });
-  }
-  unsubscribe():void {
-    this.userChangesSubscription.unsubscribe();
   }
   getUserProperties():void {
     this.email = this.userService.getEmail();

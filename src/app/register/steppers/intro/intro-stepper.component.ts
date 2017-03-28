@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'first-stepper',
-  templateUrl: './first-stepper.component.html',
-  styleUrls: ['./first-stepper.component.css']
+  selector: 'intro-stepper',
+  templateUrl: './intro-stepper.component.html',
+  styleUrls: ['./intro-stepper.component.css']
 })
 
-export class FirstStepperComponent {
+export class IntroStepperComponent {
 
   constructor(private router:Router) {}
 

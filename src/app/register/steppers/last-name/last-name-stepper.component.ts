@@ -2,19 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { MdlModule } from 'angular2-mdl';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'first-name-stepper',
-  templateUrl: './first-name-stepper.component.html',
-  styleUrls: ['./first-name-stepper.component.css']
+  selector: 'last-name-stepper',
+  templateUrl: './last-name-stepper.component.html',
+  styleUrls: ['./last-name-stepper.component.css']
 })
 
-export class FirstNameStepperComponent implements OnInit {
+export class LastNameStepperComponent implements OnInit {
 
   form:FormGroup;
   email:string;
   firstName:string;
+  lastName:string;
 
   constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
 
@@ -34,15 +35,17 @@ export class FirstNameStepperComponent implements OnInit {
   getUserProperties():void {
     this.email = this.userService.getEmail();
     this.firstName = this.userService.getFirstName();
+    this.lastName = this.userService.getLastName();
   }
   setUserProperties():void {
-    this.userService.setFirstName(this.firstName);
+    this.userService.setLastName(this.lastName);
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/last-name');
+    this.router.navigateByUrl('register/password');
   }
+
   previousStepper():void {
-    this.router.navigateByUrl('register/email');
+    this.router.navigateByUrl('register/first-name');
   }
 }

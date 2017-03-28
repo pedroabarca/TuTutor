@@ -35,7 +35,6 @@ export class RegisterComponent extends AuthComponent {
     );
   }
   verifyUserData(auth:any):void {
-    console.log(auth);
     if(auth.provider === 2)
       this.userService.setEmail(auth.facebook.email);
     else if(auth.provider === 3)
