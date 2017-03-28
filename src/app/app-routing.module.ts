@@ -1,8 +1,9 @@
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { IntroStepperComponent } from './register/steppers/intro/intro-stepper.component';
-import { FirstNameStepperComponent } from './register/steppers/first-name/first-name-stepper.component';
-import { LastNameStepperComponent } from './register/steppers/last-name/last-name-stepper.component';
+import { NameStepperComponent } from './register/steppers/name/name-stepper.component';
+import { SurNameStepperComponent } from './register/steppers/surname/surname-stepper.component';
+import { PhoneStepperComponent } from './register/steppers/phone/phone-stepper.component';
 import { EmailStepperComponent } from './register/steppers/email/email-stepper.component';
 import { PasswordStepperComponent } from './register/steppers/password/password-stepper.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -21,10 +22,13 @@ import { NgModule } from '@angular/core';
             path: '', component: IntroStepperComponent
           },
           {
-            path: 'first-name', component: FirstNameStepperComponent
+            path: 'first-name', component: NameStepperComponent
           },
           {
-            path: 'last-name', component: LastNameStepperComponent
+            path: 'last-name', component: SurNameStepperComponent
+          },
+          {
+            path: 'phone', component: PhoneStepperComponent
           },
           {
             path: 'email', component: EmailStepperComponent

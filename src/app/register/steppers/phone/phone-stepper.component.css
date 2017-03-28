@@ -8,6 +8,9 @@
   display: block;
   padding: 0;
 }
+.mdl-button:hover {
+  background-color: #009688;
+}
 .color-white {
   color: white;
 }
@@ -16,7 +19,7 @@
 }
 .vertical-align {
   position: relative;
-  top: 40%;
+  top: 35%;
   transform: translateY(-50%);
 }
 .mdl-button[disabled][disabled] {

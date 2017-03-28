@@ -6,12 +6,12 @@ import { MdlModule } from 'angular2-mdl';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'first-name-stepper',
-  templateUrl: './first-name-stepper.component.html',
-  styleUrls: ['./first-name-stepper.component.css']
+  selector: 'name-stepper',
+  templateUrl: './name-stepper.component.html',
+  styleUrls: ['./name-stepper.component.css']
 })
 
-export class FirstNameStepperComponent implements OnInit {
+export class NameStepperComponent implements OnInit {
 
   form:FormGroup;
   userChangesSubscription:Subscription;

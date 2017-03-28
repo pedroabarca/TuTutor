@@ -6,11 +6,11 @@ import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'last-name-stepper',
-  templateUrl: './last-name-stepper.component.html',
-  styleUrls: ['./last-name-stepper.component.css']
+  templateUrl: './surname-stepper.component.html',
+  styleUrls: ['./surname-stepper.component.css']
 })
 
-export class LastNameStepperComponent implements OnInit {
+export class SurNameStepperComponent implements OnInit {
 
   form:FormGroup;
   email:string;
@@ -42,7 +42,7 @@ export class LastNameStepperComponent implements OnInit {
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/password');
+    this.router.navigateByUrl('register/phone');
   }
 
   previousStepper():void {

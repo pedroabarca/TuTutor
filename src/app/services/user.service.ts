@@ -41,6 +41,12 @@ export class UserService {
   getLastName():string {
     return this.user.lastName;
   }
+  setPhone(phone:number):void {
+    this.user.phone = phone;
+  }
+  getPhone():number {
+    return this.user.phone;
+  }
   setPhotoUrl(photoUrl:string):void {
     this.user.photoUrl = photoUrl;
   }

@@ -12,7 +12,7 @@ import { User } from '../models/user';
 
 export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
 
-  errors = {'auth/user-not-found': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/wrong-password': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/invalid-email': { value: 'Formato de correo electrónico incorrecto' }, 'auth/email-already-in-use': { value: 'Este correo electrónico ya está siendo utilizado' } };
+  errors = {'auth/user-not-found': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/wrong-password': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/invalid-email': { value: 'Formato de correo electrónico incorrecto' }, 'auth/email-already-in-use': { value: 'Este correo electrónico ya está siendo utilizado' }, 'auth/internal-error': { value: 'Ha ocurrido un error' } };
   authSubscription:Subscription;
   userInfoSubscription:Subscription;
   user:User;

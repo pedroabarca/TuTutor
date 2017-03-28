@@ -4,6 +4,7 @@ export class User {
   password:string;
   firstName:string;
   lastName:string;
+  phone:number;
   photoUrl:string;
   isAdmin:boolean;
   isTutor:boolean;
