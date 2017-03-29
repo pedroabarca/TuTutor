@@ -48,6 +48,9 @@ a {
 .cursor {
   cursor: pointer;
 }
+.card-title {
+  min-height: 5rem;
+}
 .mdl-card__supporting-text {
   width: 100%;
   padding: 0;

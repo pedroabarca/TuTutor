@@ -1,0 +1,31 @@
+:host {
+  height: 100%;
+  text-align: center;
+}
+.mdl-card__supporting-text {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+}
+.color-white {
+  color: white;
+}
+.small-image {
+  height: 8rem;
+  width: 8rem;
+}
+.bottom-margin {
+  margin-bottom: 1rem;
+}
+.full-height {
+  height: 100%;
+}
+.vertical-align {
+  position: relative;
+  top: 35%;
+  transform: translateY(-50%);
+}
+.mdl-button[disabled][disabled] {
+  cursor: pointer;
+}

@@ -5,6 +5,7 @@ import { NameStepperComponent } from './register/steppers/name/name-stepper.comp
 import { SurNameStepperComponent } from './register/steppers/surname/surname-stepper.component';
 import { PhoneStepperComponent } from './register/steppers/phone/phone-stepper.component';
 import { EmailStepperComponent } from './register/steppers/email/email-stepper.component';
+import { PhotoStepperComponent } from './register/steppers/photo/photo-stepper.component';
 import { PasswordStepperComponent } from './register/steppers/password/password-stepper.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { TutorHomeComponent } from './tutor/tutor-home/tutor-home.component';
@@ -29,6 +30,9 @@ import { NgModule } from '@angular/core';
           },
           {
             path: 'phone', component: PhoneStepperComponent
+          },
+          {
+            path: 'photo', component: PhotoStepperComponent
           },
           {
             path: 'email', component: EmailStepperComponent

@@ -9,12 +9,13 @@ import { NameStepperComponent } from './steppers/name/name-stepper.component';
 import { SurNameStepperComponent } from './steppers/surname/surname-stepper.component';
 import { PhoneStepperComponent } from './steppers/phone/phone-stepper.component';
 import { EmailStepperComponent } from './steppers/email/email-stepper.component';
+import { PhotoStepperComponent } from './steppers/photo/photo-stepper.component';
 import { PasswordStepperComponent } from './steppers/password/password-stepper.component';
 import { UserService } from '../services/user.service';
 
 @NgModule({
   imports: [CommonModule, MdlModule, RouterModule, FormsModule, ReactiveFormsModule],
-  declarations: [RegisterComponent, IntroStepperComponent, NameStepperComponent, SurNameStepperComponent, PhoneStepperComponent, EmailStepperComponent, PasswordStepperComponent],
+  declarations: [RegisterComponent, IntroStepperComponent, NameStepperComponent, SurNameStepperComponent, PhoneStepperComponent, EmailStepperComponent, PhotoStepperComponent, PasswordStepperComponent],
   exports: [RegisterComponent],
   providers: [UserService]
 })
