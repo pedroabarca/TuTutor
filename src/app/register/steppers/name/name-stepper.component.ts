@@ -15,7 +15,6 @@ export class NameStepperComponent implements OnInit {
 
   form:FormGroup;
   userChangesSubscription:Subscription;
-  email:string;
   firstName:string;
 
   constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}

@@ -15,9 +15,6 @@ export class PhoneStepperComponent implements OnInit {
 
   form:FormGroup;
   userChangesSubscription:Subscription;
-  firstName:string;
-  lastName:string;
-  email:string;
   phone:number;
 
   constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
@@ -30,8 +27,6 @@ export class PhoneStepperComponent implements OnInit {
   subscribe():void {
     this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
-        this.email = user.email;
-        this.firstName = user.firstName;
         this.phone = user.phone;
       }
     );
@@ -41,7 +36,7 @@ export class PhoneStepperComponent implements OnInit {
   }
   buildForm():void {
     this.form = this.formBuilder.group({
-      'data' : [this.firstName, [
+      'data' : [this.phone, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(8),
@@ -50,18 +45,15 @@ export class PhoneStepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
-    this.firstName = this.userService.getFirstName();
-    this.lastName = this.userService.getLastName();
-    this.email = this.userService.getEmail();
   }
   setUserProperties():void {
     this.userService.setPhone(this.phone);
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/password');
+    this.router.navigateByUrl('register/photo');
   }
   previousStepper():void {
-    this.router.navigateByUrl('register/email');
+    this.router.navigateByUrl('register/last-name');
   }
 }

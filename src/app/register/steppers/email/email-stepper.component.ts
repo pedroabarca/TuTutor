@@ -17,7 +17,9 @@ export class EmailStepperComponent implements OnInit, OnDestroy {
   userChangesSubscription:Subscription;
   email:string;
 
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
+  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {
+    console.log(userService.getEmail());
+  }
 
   ngOnInit() {
     this.buildForm();
@@ -28,8 +30,9 @@ export class EmailStepperComponent implements OnInit, OnDestroy {
     this.unsubscribe();
   }
   subscribe():void {
-    this.userChangesSubscription = this.userService.isFinished$.subscribe(
+    this.userChangesSubscription = this.userService.isChanged$.subscribe(
       user => {
+        console.log(user);
         this.email = user.email;
       }
     );
@@ -47,9 +50,13 @@ export class EmailStepperComponent implements OnInit, OnDestroy {
   }
   getUserProperties():void {
     this.email = this.userService.getEmail();
+    console.log(this.userService.getEmail());
   }
   setUserProperties():void {
     this.userService.setEmail(this.email);
+  }
+  printInfo():void {
+    console.log(this.userService.getEmail());
   }
   nextStepper():void {
     this.setUserProperties();

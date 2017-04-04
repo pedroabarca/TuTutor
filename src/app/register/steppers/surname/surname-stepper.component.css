@@ -18,7 +18,7 @@
 }
 .vertical-align {
   position: relative;
-  top: 30%;
+  top: 25%;
   transform: translateY(-50%);
 }
 .mdl-button[disabled][disabled] {

@@ -13,14 +13,11 @@ import { UserService } from '../../../services/user.service';
 
 export class PhotoStepperComponent implements OnInit {
 
-  firstName:string;
-  lastName:string;
-  email:string;
-  phone:number;
   photo:string;
+  preview:string;
 
   constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {
-    this.photo = './assets/img/user_default.png'
+    this.preview = './assets/img/user_default.png';
   }
 
   ngOnInit() {
@@ -30,29 +27,34 @@ export class PhotoStepperComponent implements OnInit {
   buildForm():void {
   }
   getUserProperties():void {
-    this.firstName = this.userService.getFirstName();
-    this.lastName = this.userService.getLastName();
-    this.email = this.userService.getEmail();
-    this.phone = this.userService.getPhone();
   }
   setUserProperties():void {
     this.userService.setPhotoUrl(this.photo);
-    //this.userService.registerHasFinished();
   }
   onChange(event):void {
-    this.photo = event.srcElement.files[0].name;
+    this.photo = event.srcElement.files[0];
     let reader:FileReader = new FileReader();
-    reader.onloadend = (image) => {
-      this.photo = reader.result;
-      console.log(this.photo);
+    reader.onloadend = () => {
+      this.preview = reader.result;
     }
     reader.readAsDataURL(event.srcElement.files[0]);
+    /*let storageRef = firebase.storage().ref('images');
+    storageRef.put(this.photo)
+    .then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    })
+    .catch(function(error) {
+      console.log('Error!!');
+      console.log(error);
+    });*/
   }
   previousStepper():void {
     this.router.navigateByUrl('register/last-name');
   }
+  uploadPhoto():void {
+  }
   nextStepper():void {
-    //this.setUserProperties();
-    //this.router.navigateByUrl('register/email');
+    this.setUserProperties();
+    this.router.navigateByUrl('register/password');
   }
 }

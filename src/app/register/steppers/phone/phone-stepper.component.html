@@ -2,15 +2,6 @@
   <div class="vertical-align">
     <form class="mdl-grid" [formGroup]="form">
       <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required value="{{email}}" disabled type="email" label="Correo electrónico" floating-label name="email"></mdl-textfield>
-      </div>
-      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required value="{{firstName}}" disabled type="text" label="Nombre" floating-label name="firstName"></mdl-textfield>
-      </div>
-      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required value="{{lastName}}" disabled type="text" label="Apellidos" floating-label name="lastName"></mdl-textfield>
-      </div>
-      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
         <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required type="phone" autofocus label="Número telefónico" [(ngModel)]="phone" formControlName="data" floating-label name="phone"></mdl-textfield>
       </div>
       <div class="mdl-cell--6-col">

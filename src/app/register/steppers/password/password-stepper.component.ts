@@ -13,10 +13,6 @@ import { UserService } from '../../../services/user.service';
 export class PasswordStepperComponent implements OnInit {
 
   form:FormGroup;
-  firstName:string;
-  lastName:string;
-  email:string;
-  phone:number;
   password:string;
 
   constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
@@ -27,17 +23,13 @@ export class PasswordStepperComponent implements OnInit {
   }
   buildForm():void {
     this.form = this.formBuilder.group({
-      'data' : [this.firstName, [
+      'data' : [this.password, [
         Validators.required,
         Validators.minLength(6),
       ]]
     });
   }
   getUserProperties():void {
-    this.firstName = this.userService.getFirstName();
-    this.lastName = this.userService.getLastName();
-    this.email = this.userService.getEmail();
-    this.phone = this.userService.getPhone();
     this.password = this.userService.getPassword();
   }
   setUserProperties():void {
