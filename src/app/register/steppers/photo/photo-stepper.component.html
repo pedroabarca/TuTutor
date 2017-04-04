@@ -2,10 +2,10 @@
   <div class="vertical-align">
     <form class="mdl-grid">
       <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required type="file" autofocus label="Foto de perfil" (change)="onChange($event)" floating-label name="photo"></mdl-textfield>
+        <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" id="photo" #photo required type="file" autofocus label="Foto de perfil" (change)="onChange($event)" floating-label name="photo"></mdl-textfield>
       </div>
       <div class="mdl-cell--12-col-desktop bottom-margin">
-        <img [src]="preview" class="small-image">
+        <img [src]="preview" (click)="photo.click()" class="small-image">
       </div>
       <div class="mdl-cell--6-col" >
         <button mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">

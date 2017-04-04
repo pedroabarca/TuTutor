@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
+import { AngularFire } from 'angularfire2';
 import { MdlModule } from 'angular2-mdl';
+import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -11,10 +13,11 @@ import { UserService } from '../services/user.service';
 
 export class StepperComponent implements OnInit, OnDestroy {
 
+  authSubscription:Subscription;
   form:FormGroup;
-  userChangesSubscription:Subscription;
+  user = new User();
 
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
+  constructor(protected angularFire:AngularFire, protected router:Router, protected userService:UserService, protected formBuilder:FormBuilder) {}
 
   ngOnInit() {
     this.subscribe();
@@ -23,13 +26,8 @@ export class StepperComponent implements OnInit, OnDestroy {
     this.unsubscribe();
   }
   subscribe():void {
-    this.userChangesSubscription = this.userService.isChanged$.subscribe(
-      user => {
-        console.log(user);
-      }
-    );
   }
   unsubscribe():void {
-    if(this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
+    if(this.authSubscription !== undefined) this.authSubscription.unsubscribe();
   }
 }

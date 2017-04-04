@@ -24,7 +24,6 @@ export class RegisterComponent extends AuthComponent {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null) {
-          console.log(auth);
           this.verifyUserData(auth);
         }
       }
@@ -37,12 +36,10 @@ export class RegisterComponent extends AuthComponent {
     );
   }
   verifyUserData(auth:any):void {
-    console.log(auth);
     if(auth.provider === 2)
       this.userService.setEmail(auth.facebook.email);
     else if(auth.provider === 3)
       this.userService.setEmail(auth.google.email);
-    console.log(this.userService.getEmail());
   }
   createUser():void {
     this.angularFire.auth.createUser({

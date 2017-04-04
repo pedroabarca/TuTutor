@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MdlModule } from 'angular2-mdl';
+import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -11,28 +12,13 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./phone-stepper.component.css']
 })
 
-export class PhoneStepperComponent implements OnInit {
+export class PhoneStepperComponent extends StepperComponent implements OnInit {
 
-  form:FormGroup;
-  userChangesSubscription:Subscription;
   phone:number;
-
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
 
   ngOnInit() {
     this.buildForm();
-    this.subscribe();
     this.getUserProperties();
-  }
-  subscribe():void {
-    this.userChangesSubscription = this.userService.isFinished$.subscribe(
-      user => {
-        this.phone = user.phone;
-      }
-    );
-  }
-  unsubscribe():void {
-    if(this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
   }
   buildForm():void {
     this.form = this.formBuilder.group({
@@ -45,6 +31,7 @@ export class PhoneStepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
+    this.phone = this.userService.getPhone();
   }
   setUserProperties():void {
     this.userService.setPhone(this.phone);

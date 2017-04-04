@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import * as firebase from 'firebase';
@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user.service';
 
 export class PhotoStepperComponent implements OnInit {
 
+  @ViewChild('photo') photoElement:ElementRef; 
   photo:string;
   preview:string;
 
@@ -48,8 +49,11 @@ export class PhotoStepperComponent implements OnInit {
       console.log(error);
     });*/
   }
+  selectFile():void {
+    this.photoElement.nativeElement.click();
+  }
   previousStepper():void {
-    this.router.navigateByUrl('register/last-name');
+    this.router.navigateByUrl('register/phone');
   }
   uploadPhoto():void {
   }

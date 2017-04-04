@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { MdlModule } from 'angular2-mdl';
+import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -10,14 +11,9 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./surname-stepper.component.css']
 })
 
-export class SurNameStepperComponent implements OnInit {
+export class SurNameStepperComponent extends StepperComponent implements OnInit {
 
-  form:FormGroup;
-  email:string;
-  firstName:string;
   lastName:string;
-
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
 
   ngOnInit() {
     this.buildForm();
@@ -25,7 +21,7 @@ export class SurNameStepperComponent implements OnInit {
   }
   buildForm():void {
     this.form = this.formBuilder.group({
-      'data' : [this.firstName, [
+      'data' : [this.lastName, [
         Validators.required,
         Validators.minLength(3),
         Validators.pattern('[[A-Za-z]([A-Za-z ]+)$')
@@ -33,8 +29,6 @@ export class SurNameStepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
-    this.email = this.userService.getEmail();
-    this.firstName = this.userService.getFirstName();
     this.lastName = this.userService.getLastName();
   }
   setUserProperties():void {

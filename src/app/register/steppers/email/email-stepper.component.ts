@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MdlModule } from 'angular2-mdl';
+import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -11,34 +12,21 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./email-stepper.component.css']
 })
 
-export class EmailStepperComponent implements OnInit, OnDestroy {
+export class EmailStepperComponent extends StepperComponent implements OnInit, OnDestroy {
 
-  form:FormGroup;
-  userChangesSubscription:Subscription;
   email:string;
 
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {
-    console.log(userService.getEmail());
-  }
-
   ngOnInit() {
-    this.buildForm();
     this.subscribe();
-    this.getUserProperties();
-  }
-  ngOnDestroy():void {
-    this.unsubscribe();
+    this.buildForm();
   }
   subscribe():void {
-    this.userChangesSubscription = this.userService.isChanged$.subscribe(
-      user => {
-        console.log(user);
-        this.email = user.email;
+    this.authSubscription = this.angularFire.auth.subscribe(
+      auth => {
+        if(auth !== null)
+          this.email = auth.auth.email;
       }
     );
-  }
-  unsubscribe():void {
-    if(this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
   }
   buildForm():void {
     this.form = this.formBuilder.group({
@@ -48,15 +36,8 @@ export class EmailStepperComponent implements OnInit, OnDestroy {
       ]]
     });
   }
-  getUserProperties():void {
-    this.email = this.userService.getEmail();
-    console.log(this.userService.getEmail());
-  }
   setUserProperties():void {
     this.userService.setEmail(this.email);
-  }
-  printInfo():void {
-    console.log(this.userService.getEmail());
   }
   nextStepper():void {
     this.setUserProperties();

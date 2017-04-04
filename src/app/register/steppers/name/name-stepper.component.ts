@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MdlModule } from 'angular2-mdl';
+import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -11,33 +12,17 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./name-stepper.component.css']
 })
 
-export class NameStepperComponent implements OnInit {
+export class NameStepperComponent extends StepperComponent implements OnInit {
 
-  form:FormGroup;
-  userChangesSubscription:Subscription;
-  firstName:string;
-
-  constructor(private router:Router, private userService:UserService, private formBuilder:FormBuilder) {}
+  name:string;
 
   ngOnInit() {
     this.buildForm();
-    this.subscribe();
     this.getUserProperties();
-  }
-  subscribe():void {
-    this.userChangesSubscription = this.userService.isFinished$.subscribe(
-      user => {
-        this.email = user.email;
-        this.firstName = user.firstName;
-      }
-    );
-  }
-  unsubscribe():void {
-    if(this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
   }
   buildForm():void {
     this.form = this.formBuilder.group({
-      'data' : [this.firstName, [
+      'data' : [this.name, [
         Validators.required,
         Validators.minLength(3),
         Validators.pattern('[[A-Za-z]([A-Za-z ]+)$')
@@ -45,11 +30,10 @@ export class NameStepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
-    this.email = this.userService.getEmail();
-    this.firstName = this.userService.getFirstName();
+    this.name = this.userService.getFirstName();
   }
   setUserProperties():void {
-    this.userService.setFirstName(this.firstName);
+    this.userService.setFirstName(this.name);
   }
   nextStepper():void {
     this.setUserProperties();

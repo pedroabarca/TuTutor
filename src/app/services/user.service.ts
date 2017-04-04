@@ -12,6 +12,7 @@ export class UserService {
   user:User = new User();
 
   constructor() {
+    console.log(this.user);
   }
 
   registerHasFinished():void {
@@ -39,6 +40,7 @@ export class UserService {
     this.propertyHasCHanged();
   }
   getFirstName():string {
+    console.log(this.user);
     return this.user.firstName;
   }
   setLastName(lastName:string):void {
