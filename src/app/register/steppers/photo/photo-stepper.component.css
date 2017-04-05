@@ -30,6 +30,6 @@
 .mdl-button[disabled][disabled] {
   cursor: pointer;
 }
-mdl-textfield[type="file"] {
+input[type="file"] {
   display: none;
 }
