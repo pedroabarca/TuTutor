@@ -2,13 +2,16 @@
   <div class="vertical-align">
     <form class="mdl-grid" [formGroup]="form">
       <div class="mdl-cell--12-col margin-bottom">
-        <mdl-textfield required class="mdl-cell--10-col" autofocus type="text" label="Nombre" [(ngModel)]="name" formControlName="data" floating-label name="firstName"></mdl-textfield>
+        <img src="assets/img/vista_tres.svg" class="full-height img">
       </div>
-      <div class="mdl-cell--12-col margin-bottom">
-        <img src="assets/img/vista_dos.svg" class="full-height img">
+      <div class="mdl-cell--6-col margin-bottom">
+        <mdl-radio  value="male" [(ngModel)]="lastName" formControlName="data" mdl-ripple>Masculino</mdl-radio>
+      </div>
+      <div class="mdl-cell--6-col margin-bottom">
+        <mdl-radio value="female" [(ngModel)]="lastName" formControlName="data" mdl-ripple>Femenino</mdl-radio>
       </div>
       <div class="mdl-cell--6-col">
-        <button  mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">
+        <button mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">
           Anterior
         </button>
       </div>

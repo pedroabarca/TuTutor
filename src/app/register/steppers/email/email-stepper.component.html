@@ -1,8 +1,11 @@
 <mdl-card-supporting-text class="full-height">
   <div class="vertical-align">
     <form class="mdl-grid" [formGroup]="form">
-      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-        <mdl-textfield required class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" name="email" autofocus type="email" label="Correo electrónico" [(ngModel)]="email" formControlName="data" floating-label ></mdl-textfield>
+      <div class="mdl-cell--12-col margin-bottom">
+        <mdl-textfield required class="mdl-cell--10-col" name="email" autofocus type="email" label="Correo electrónico" [(ngModel)]="email" formControlName="data" floating-label ></mdl-textfield>
+      </div>
+      <div class="mdl-cell--12-col margin-bottom">
+        <img src="assets/img/vista_uno.svg" class="full-height img">
       </div>
       <div class="mdl-cell--6-col">
         <button  mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">

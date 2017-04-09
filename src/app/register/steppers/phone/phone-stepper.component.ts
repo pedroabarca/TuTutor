@@ -41,6 +41,6 @@ export class PhoneStepperComponent extends StepperComponent implements OnInit {
     this.router.navigateByUrl('register/photo');
   }
   previousStepper():void {
-    this.router.navigateByUrl('register/last-name');
+    this.router.navigateByUrl('register/name');
   }
 }

@@ -6,12 +6,12 @@ import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'last-name-stepper',
-  templateUrl: './surname-stepper.component.html',
-  styleUrls: ['./surname-stepper.component.css']
+  selector: 'gender-stepper',
+  templateUrl: './gender-stepper.component.html',
+  styleUrls: ['./gender-stepper.component.css']
 })
 
-export class SurNameStepperComponent extends StepperComponent implements OnInit {
+export class GenderStepperComponent extends StepperComponent implements OnInit {
 
   lastName:string;
 
@@ -23,8 +23,6 @@ export class SurNameStepperComponent extends StepperComponent implements OnInit 
     this.form = this.formBuilder.group({
       'data' : [this.lastName, [
         Validators.required,
-        Validators.minLength(3),
-        Validators.pattern('[[A-Za-z]([A-Za-z ]+)$')
       ]]
     });
   }
@@ -40,6 +38,6 @@ export class SurNameStepperComponent extends StepperComponent implements OnInit 
   }
 
   previousStepper():void {
-    this.router.navigateByUrl('register/first-name');
+    this.router.navigateByUrl('register/name');
   }
 }

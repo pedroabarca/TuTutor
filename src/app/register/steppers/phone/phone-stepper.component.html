@@ -1,8 +1,11 @@
 <mdl-card-supporting-text class="full-height">
   <div class="vertical-align">
     <form class="mdl-grid" [formGroup]="form">
-      <div class="mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+      <div class="mdl-cell--12-col margin-bottom">
         <mdl-textfield class="mdl-cell--10-col-desktop mdl-cell--12-col-tablet" required type="phone" autofocus label="Número telefónico" [(ngModel)]="phone" formControlName="data" floating-label name="phone"></mdl-textfield>
+      </div>
+      <div class="mdl-cell--12-col margin-bottom">
+        <img src="assets/img/vista_cuatro.svg" class="full-height img">
       </div>
       <div class="mdl-cell--6-col">
         <button  mdl-button mdl-ripple (click)="previousStepper()" class="background-primary background-hover color-white small-text">

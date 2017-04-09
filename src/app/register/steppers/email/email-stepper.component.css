@@ -3,10 +3,12 @@
   text-align: center;
 }
 .mdl-card__supporting-text {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
   display: block;
   padding: 0;
+}
+.max-height {
+  max-height: 8rem;
 }
 .mdl-button:hover {
   background-color: #004D40 }
@@ -16,11 +18,18 @@
 .full-height {
   height: 100%;
 }
+.img {
+  width: 120px;
+  height: 120px;
+}
 .vertical-align {
   position: relative;
-  top: 25%;
+  top: 30%;
   transform: translateY(-50%);
 }
 .mdl-button[disabled][disabled] {
   cursor: pointer;
+}
+.margin-bottom {
+  margin-bottom: 1rem;
 }

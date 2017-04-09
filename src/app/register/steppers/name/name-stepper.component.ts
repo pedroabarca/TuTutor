@@ -25,7 +25,7 @@ export class NameStepperComponent extends StepperComponent implements OnInit {
       'data' : [this.name, [
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern('[[A-Za-z]([A-Za-z ]+)$')
+        Validators.pattern('[[A-Za-z]{3,} ([A-Za-z ]{4,})$')
       ]]
     });
   }
@@ -37,7 +37,7 @@ export class NameStepperComponent extends StepperComponent implements OnInit {
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/last-name');
+    this.router.navigateByUrl('register/gender');
   }
   previousStepper():void {
     this.router.navigateByUrl('register/email');

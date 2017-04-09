@@ -23,8 +23,7 @@
 .mdl-button:hover {
   background-color: #004D40 }
 .mdl-card__supporting-text {
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
   display: block;
   padding: 0;
 }

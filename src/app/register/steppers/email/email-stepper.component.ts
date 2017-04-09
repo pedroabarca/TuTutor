@@ -9,7 +9,7 @@ import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'email-stepper',
   templateUrl: './email-stepper.component.html',
-  styleUrls: ['./email-stepper.component.css']
+  styleUrls: ['./email-stepper.component.css'],
 })
 
 export class EmailStepperComponent extends StepperComponent implements OnInit, OnDestroy {
@@ -24,6 +24,7 @@ export class EmailStepperComponent extends StepperComponent implements OnInit, O
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null)
+          console.log(auth);
           this.email = auth.auth.email;
       }
     );
@@ -41,7 +42,7 @@ export class EmailStepperComponent extends StepperComponent implements OnInit, O
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/first-name');
+    this.router.navigateByUrl('register/name');
   }
   previousStepper():void {
     this.router.navigateByUrl('register');

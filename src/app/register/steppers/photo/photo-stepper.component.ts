@@ -21,42 +21,41 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
 
   ngOnInit() {
     this.subscribe();
-    this.getUserProperties();
   }
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null) {
-          /*this.preview = this.setImage(auth);
-          this.photo = this.preview;*/
+          let image = this.userService.getPhotoUrl();
+          if(image === undefined) {
+            this.preview = this.setImage(auth);
+            this.photo = this.preview;
+          }
+          else {
+            if(typeof(image) === 'object')
+              this.loadImage(image);
+          }
         }
       }
     );
-  }
-  getUserProperties():void {
-    this.loadImage(this.userService.getPhotoUrl());
   }
   setUserProperties():void {
     this.userService.setPhotoUrl(this.photo);
   }
   setImage(auth:any):any {
     if(auth.provider === 2)
-      return auth.auth.photoURL;
+      return auth.facebook.photoURL;
     else if(auth.provider === 3)
-      return auth.auth.photoURL;
+      return auth.google.photoURL;
     else
       return './assets/img/user_default.png';
   }
   loadImage(file:any):void {
-    console.log(file);
-    console.log((typeof file === 'object'));
-    if(typeof file === 'object') {
-      let reader:FileReader = new FileReader();
-      reader.onloadend = () => {
-        this.preview = reader.result;
-      }
-      reader.readAsDataURL(file);
+    let reader:FileReader = new FileReader();
+    reader.onloadend = () => {
+      this.preview = reader.result;
     }
+    reader.readAsDataURL(file);
   }
   onChange(event):void {
     this.photo = event.srcElement.files[0];
@@ -78,8 +77,7 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
     });*/
   }
   previousStepper():void {
-    console.log(this.userService.getPhotoUrl());
-    //this.router.navigateByUrl('register/phone');
+    this.router.navigateByUrl('register/phone');
 
   }
   nextStepper():void {
