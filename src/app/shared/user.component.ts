@@ -41,11 +41,11 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
   }
   setImage(auth:any):any {
     if(auth.provider === 2)
-      this.user.photoUrl = auth.facebook.photoURL;
+      this.user.photo = auth.facebook.photoURL;
     else if(auth.provider === 3)
-      this.user.photoUrl = auth.google.photoURL;
+      this.user.photo = auth.google.photoURL;
     else
-      this.user.photoUrl = 'assets/img/user_default.png';
+      this.user.photo = 'assets/img/user_default.png';
   }
   signOut():void {
     this.angularFire.auth.logout();

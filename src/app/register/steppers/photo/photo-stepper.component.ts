@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import { AngularFire } from 'angularfire2';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Validators }  from '@angular/forms';
 import * as firebase from 'firebase';
-import { MdlModule } from 'angular2-mdl';
 import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
@@ -29,6 +26,7 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
           let image = this.userService.getPhotoUrl();
           if(image === undefined) {
             this.preview = this.setImage(auth);
+            console.log(this.preview);
             this.photo = this.preview;
           }
           else {
@@ -65,7 +63,6 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
       this.preview = reader.result;
     }
     reader.readAsDataURL(event.srcElement.files[0]);
-    console.log(this.photo);
     /*let storageRef = firebase.storage().ref('images');
     storageRef.put(this.photo)
     .then(function(snapshot) {
@@ -78,7 +75,6 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
   }
   previousStepper():void {
     this.router.navigateByUrl('register/phone');
-
   }
   nextStepper():void {
     this.setUserProperties();

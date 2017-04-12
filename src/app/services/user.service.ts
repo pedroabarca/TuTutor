@@ -11,15 +11,12 @@ export class UserService {
   isChanged$ = this.isFinished.asObservable();
   user:User = new User();
 
-  constructor() {
-    console.log(this.user);
-  }
+  constructor() {}
 
   registerHasFinished():void {
     this.isFinished.next(this.user);
   }
   propertyHasCHanged():void {
-    this.isFinished.next(this.user);
   }
   setEmail(email:string):void {
     this.user.email = email;
@@ -35,20 +32,19 @@ export class UserService {
   getPassword():string {
     return this.user.password;
   }
-  setFirstName(firstName:string):void {
-    this.user.firstName = firstName;
+  setName(name:string):void {
+    this.user.name = name;
     this.propertyHasCHanged();
   }
-  getFirstName():string {
-    console.log(this.user);
-    return this.user.firstName;
+  getName():string {
+    return this.user.name;
   }
-  setLastName(lastName:string):void {
-    this.user.lastName = lastName;
+  setGender(gender:string):void {
+    this.user.gender = gender;
     this.propertyHasCHanged();
   }
   getLastName():string {
-    return this.user.lastName;
+    return this.user.gender;
   }
   setPhone(phone:number):void {
     this.user.phone = phone;
@@ -58,11 +54,11 @@ export class UserService {
     return this.user.phone;
   }
   setPhotoUrl(photoUrl:string):void {
-    this.user.photoUrl = photoUrl;
+    this.user.photo = photoUrl;
     this.propertyHasCHanged();
   }
   getPhotoUrl():string {
-    return this.user.photoUrl;
+    return this.user.photo;
   }
   setIsAdmin(isAdmin:boolean):void {
     this.user.isAdmin = isAdmin;

@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import { MdlModule } from 'angular2-mdl';
+import { Validators }  from '@angular/forms';
 import { StepperComponent } from '../../../shared/stepper.component';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'name-stepper',
@@ -30,10 +26,10 @@ export class NameStepperComponent extends StepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
-    this.name = this.userService.getFirstName();
+    this.name = this.userService.getName();
   }
   setUserProperties():void {
-    this.userService.setFirstName(this.name);
+    this.userService.setName(this.name);
   }
   nextStepper():void {
     this.setUserProperties();

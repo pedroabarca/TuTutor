@@ -2,10 +2,10 @@ export class User {
 
   email:string;
   password:string;
-  firstName:string;
-  lastName:string;
+  name:string;
+  gender:string;
   phone:number;
-  photoUrl:string;
+  photo:string;
   isAdmin:boolean;
   isTutor:boolean;
 

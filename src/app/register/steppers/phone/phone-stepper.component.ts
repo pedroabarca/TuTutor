@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import { MdlModule } from 'angular2-mdl';
+import { Validators }  from '@angular/forms';
 import { StepperComponent } from '../../../shared/stepper.component';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'phone-stepper',
@@ -41,6 +37,6 @@ export class PhoneStepperComponent extends StepperComponent implements OnInit {
     this.router.navigateByUrl('register/photo');
   }
   previousStepper():void {
-    this.router.navigateByUrl('register/name');
+    this.router.navigateByUrl('register/gender');
   }
 }

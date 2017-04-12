@@ -30,8 +30,9 @@ export class RegisterComponent extends AuthComponent {
     );
     this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
+        console.log(user);
         this.user = user;
-        //this.createUser();
+        this.createUser();
       }
     );
   }
@@ -50,13 +51,9 @@ export class RegisterComponent extends AuthComponent {
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   createUserRecord(userId:string):void {
+    console.log(userId);
     let users = this.angularFire.database.list('/users');
-    users.update(userId, {
-      firstName: this.user.firstName,
-      isAdmin: this.user.isAdmin,
-      isTutor: this.user.isTutor,
-      lastName: this.user.lastName
-    });
+    users.update(userId, this.user);
   }
   unsubscribe():void {
     if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();

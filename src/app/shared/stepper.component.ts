@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
   selector: 'stepper-stepper'
 })
 
-export class StepperComponent implements OnInit, OnDestroy {
+export class StepperComponent implements OnDestroy {
 
   authSubscription:Subscription;
   form:FormGroup;
@@ -19,13 +19,8 @@ export class StepperComponent implements OnInit, OnDestroy {
 
   constructor(protected angularFire:AngularFire, protected router:Router, protected userService:UserService, protected formBuilder:FormBuilder) {}
 
-  ngOnInit() {
-    this.subscribe();
-  }
   ngOnDestroy():void {
     this.unsubscribe();
-  }
-  subscribe():void {
   }
   unsubscribe():void {
     if(this.authSubscription !== undefined) this.authSubscription.unsubscribe();

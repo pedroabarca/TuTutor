@@ -1,10 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import { MdlModule } from 'angular2-mdl';
+import { Component, OnInit } from '@angular/core';
+import { Validators }  from '@angular/forms';
 import { StepperComponent } from '../../../shared/stepper.component';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'email-stepper',
@@ -12,7 +8,7 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./email-stepper.component.css'],
 })
 
-export class EmailStepperComponent extends StepperComponent implements OnInit, OnDestroy {
+export class EmailStepperComponent extends StepperComponent implements OnInit {
 
   email:string;
 
@@ -23,9 +19,7 @@ export class EmailStepperComponent extends StepperComponent implements OnInit, O
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
-        if(auth !== null)
-          console.log(auth);
-          this.email = auth.auth.email;
+          if(auth !== null) this.email = auth.auth.email;
       }
     );
   }
