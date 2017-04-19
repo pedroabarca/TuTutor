@@ -17,6 +17,7 @@ export class BaseComponent {
     });
   }
   showErrorMessage(key:string):void {
+    console.log(key);
     this.snackBar.showSnackbar({
       message: this.errors[key].value,
     });

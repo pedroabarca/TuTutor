@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Validators }  from '@angular/forms';
-import * as firebase from 'firebase';
 import { StepperComponent } from '../../../shared/stepper.component';
 import { UserService } from '../../../services/user.service';
 
@@ -32,6 +31,18 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
           else {
             if(typeof(image) === 'object')
               this.loadImage(image);
+            else {
+              this.preview = './assets/img/user_default.png';
+              this.photo = './assets/img/user_default.png';
+            }
+          }
+        } else {
+          let image = this.userService.getPhotoUrl();
+          if(typeof(image) === 'object')
+            this.loadImage(image);
+          else {
+            this.preview = './assets/img/user_default.png';
+            this.photo = './assets/img/user_default.png';
           }
         }
       }

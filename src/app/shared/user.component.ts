@@ -5,6 +5,7 @@ import { AngularFire } from 'angularfire2';
 import { MdlSnackbarService } from 'angular2-mdl';
 import { User } from '../models/user';
 import { BaseComponent } from './base.component';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-user',
@@ -30,14 +31,36 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
       auth => {
         if(auth === null)
           this.router.navigateByUrl('');
+        else {
+          console.log(auth);
+        }
       }
     );
+  }
+  getImage(auth:any):void {
+    let storageRef = firebase.storage().ref(auth.uid);
+    storageRef.getDownloadURL()
+    .then((url) => {
+      let xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function(event) {
+        let blob = xhr.response;
+        console.log(blob);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
   unsubscribe():void {
     this.authSubscription.unsubscribe();
   }
-  setUserMetaData(auth:any) {
-    this.setImage(auth);
+  setUserMetaData(auth:any):void {
+    console.log(auth);
+    this.getImage(auth);
+    //this.setImage(auth);
   }
   setImage(auth:any):any {
     if(auth.provider === 2)
@@ -45,7 +68,7 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
     else if(auth.provider === 3)
       this.user.photo = auth.google.photoURL;
     else
-      this.user.photo = 'assets/img/user_default.png';
+      this.user.photo = '../../assets/img/user_default.png';
   }
   signOut():void {
     this.angularFire.auth.logout();
