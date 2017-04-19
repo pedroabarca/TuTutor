@@ -41,14 +41,7 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
     let storageRef = firebase.storage().ref(auth.uid);
     storageRef.getDownloadURL()
     .then((url) => {
-      let xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        let blob = xhr.response;
-        console.log(blob);
-      };
-      xhr.open('GET', url);
-      xhr.send();
+      this.user.photo = url;
     })
     .catch(function(error) {
       console.log(error);
