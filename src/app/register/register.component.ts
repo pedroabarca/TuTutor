@@ -16,6 +16,8 @@ import * as firebase from 'firebase';
 export class RegisterComponent extends AuthComponent {
 
   userChangesSubscription:Subscription;
+  private userId:string;
+  private provider:number;
 
   constructor(protected angularFire:AngularFire, protected router:Router, protected snackBar:MdlSnackbarService, private userService:UserService) {
     super(angularFire, router, snackBar);
@@ -26,14 +28,19 @@ export class RegisterComponent extends AuthComponent {
       auth => {
         if(auth !== null) {
           this.verifyUserData(auth);
+          this.userId = auth.uid;
+          console.log(auth);
         }
       }
     );
     this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
-        console.log(user);
+        console.log(this.angularFire.auth);
         this.user = user;
-        this.createUser();
+        if (this.userId === undefined) {
+          this.createUser();
+        } else
+          this.createUserRecord(this.userId);
       }
     );
   }
@@ -44,29 +51,36 @@ export class RegisterComponent extends AuthComponent {
       this.userService.setEmail(auth.google.email);
   }
   createUser():void {
+    console.log('Creating user');
     this.angularFire.auth.createUser({
       email: this.user.email,
       password: this.user.password
     })
-    .then((response) => { this.uploadUserPhoto(response.uid) })
+    .then((response) => { this.createUserRecord(response.uid) })
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   uploadUserPhoto(userId:string):void {
-    let storageRef = firebase.storage().ref(userId);
-    storageRef.put(this.user.photo)
-    .then((snapshot) => {
-      this.createUserRecord(userId);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+    if (typeof(this.user.photo) === 'object') {
+      let storageRef = firebase.storage().ref(userId);
+      storageRef.put(this.user.photo)
+      .then((snapshot) => {
+        this.userService.clearProperties();
+        this.router.navigateByUrl('student/home')
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    } else {
+      this.userService.clearProperties();
+      this.router.navigateByUrl('student/home')
+    }
   }
   createUserRecord(userId:string):void {
     console.log(userId);
     console.log(this.user);
     let users = this.angularFire.database.list('/users');
     users.update(userId, this.user)
-    .then(() => this.router.navigateByUrl('student/home'));
+    .then(() => this.uploadUserPhoto(userId));
   }
   unsubscribe():void {
     if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();

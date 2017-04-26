@@ -14,6 +14,7 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
   @ViewChild('photo') photoElement:ElementRef; 
   photo:string;
   preview:string;
+  provider:number;
 
   ngOnInit() {
     this.subscribe();
@@ -22,10 +23,10 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null) {
+          this.provider = auth.provider;
           let image = this.userService.getPhotoUrl();
           if(image === undefined) {
             this.preview = this.setImage(auth);
-            console.log(this.preview);
             this.photo = this.preview;
           }
           else {
@@ -53,9 +54,9 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
   }
   setImage(auth:any):any {
     if(auth.provider === 2)
-      return auth.facebook.photoURL;
+      return auth.auth.photoURL;
     else if(auth.provider === 3)
-      return auth.google.photoURL;
+      return auth.auth.photoURL;
     else
       return './assets/img/user_default.png';
   }
@@ -74,21 +75,15 @@ export class PhotoStepperComponent extends StepperComponent implements OnInit {
       this.preview = reader.result;
     }
     reader.readAsDataURL(event.srcElement.files[0]);
-    /*let storageRef = firebase.storage().ref('images');
-    storageRef.put(this.photo)
-    .then(function(snapshot) {
-      console.log('Uploaded a blob or file!');
-    })
-    .catch(function(error) {
-      console.log('Error!!');
-      console.log(error);
-    });*/
   }
   previousStepper():void {
     this.router.navigateByUrl('register/phone');
   }
   nextStepper():void {
     this.setUserProperties();
-    this.router.navigateByUrl('register/password');
+    if (this.provider === 2 || this.provider === 3) {
+      this.userService.registerHasFinished();
+    } else
+      this.router.navigateByUrl('register/password');
   }
 }

@@ -16,9 +16,6 @@ import { AdminHomeModule } from './admin/admin-home/admin-home.module';
 import { TutorHomeModule } from './tutor/tutor-home/tutor-home.module';
 import { StudentHomeModule } from './student/student-home/student-home.module';
 
-// Custom services
-import { UserService } from './services/user.service';
-
 export const FIREBASE_CONFIG = {
   apiKey: 'AIzaSyD2cLxr5v0oASEZcasQ1Bh4eUhbxZ8_9N4',
   authDomain: 'tutorias-56a56.firebaseapp.com',
@@ -34,7 +31,7 @@ export const FIREBASE_CONFIG = {
   imports: [
     BrowserModule, HttpModule, MdlModule, AppRoutingModule, LoginModule, RegisterModule, AdminHomeModule, TutorHomeModule, StudentHomeModule, AngularFireModule.initializeApp(FIREBASE_CONFIG),
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

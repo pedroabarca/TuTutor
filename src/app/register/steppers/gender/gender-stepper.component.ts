@@ -24,7 +24,8 @@ export class GenderStepperComponent extends StepperComponent implements OnInit {
     });
   }
   getUserProperties():void {
-    this.gender = this.userService.getLastName();
+    console.log(this.userService.getGender());
+    this.gender = this.userService.getGender();
   }
   setUserProperties():void {
     this.userService.setGender(this.gender);

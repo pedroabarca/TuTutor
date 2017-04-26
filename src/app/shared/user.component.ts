@@ -14,6 +14,7 @@ import * as firebase from 'firebase';
 export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
 
   authSubscription:Subscription;
+  userInfoSubscription:Subscription;
   user:User;
 
   constructor(protected angularFire:AngularFire, protected router:Router, protected snackBar:MdlSnackbarService) {
@@ -38,30 +39,30 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
     );
   }
   getImage(auth:any):void {
-    let storageRef = firebase.storage().ref(auth.uid);
-    storageRef.getDownloadURL()
-    .then((url) => {
-      this.user.photo = url;
-    })
-    .catch(function(error) {
-      console.log(error);
+    let url = '/users/' + auth.uid;
+    let user = this.angularFire.database.object(url);
+    this.userInfoSubscription = user.subscribe(snapshot => {
+      this.user = snapshot;
+      if (this.user.photo === undefined) {
+        console.log('Getting image from Storage')
+        let storageRef = firebase.storage().ref(auth.uid);
+        storageRef.getDownloadURL()
+        .then((url) => {
+          this.user.photo = url;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      }
+      console.log(this.user.photo);
     });
   }
   unsubscribe():void {
     this.authSubscription.unsubscribe();
+    this.userInfoSubscription.unsubscribe();
   }
   setUserMetaData(auth:any):void {
-    console.log(auth);
     this.getImage(auth);
-    //this.setImage(auth);
-  }
-  setImage(auth:any):any {
-    if(auth.provider === 2)
-      this.user.photo = auth.facebook.photoURL;
-    else if(auth.provider === 3)
-      this.user.photo = auth.google.photoURL;
-    else
-      this.user.photo = '../../assets/img/user_default.png';
   }
   signOut():void {
     this.angularFire.auth.logout();

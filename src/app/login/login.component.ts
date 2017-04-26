@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { AngularFire } from 'angularfire2';
+import { MdlSnackbarService } from 'angular2-mdl';
 import { AuthProviders, AuthMethods } from 'angularfire2';
 import { AuthComponent } from '../shared/auth.component';
 
@@ -11,6 +15,26 @@ import { AuthComponent } from '../shared/auth.component';
 
 export class LoginComponent extends AuthComponent {
 
+  form:FormGroup;
+
+  constructor(protected angularFire:AngularFire, protected router:Router, protected snackBar:MdlSnackbarService, protected formBuilder:FormBuilder) {
+    super(angularFire, router, snackBar);
+  }
+  ngOnInit() {
+    this.subscribe();
+    this.buildForm();
+  }
+  buildForm():void {
+    this.form = this.formBuilder.group({
+      'email' : [this.user.email, [
+        Validators.required,
+        Validators.pattern('[a-z]+(.[_a-z0-9]+)*@[a-z0-9-]+(.[a-z0-9-]+)*.([a-z]{2,15})')
+      ]],
+      'password' : [this.user.password, [
+        Validators.required
+      ]],
+    });
+  }
   emailAuth():void {
     this.angularFire.auth.login({
       email: this.user.email,

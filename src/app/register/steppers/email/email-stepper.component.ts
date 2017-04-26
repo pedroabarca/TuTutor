@@ -19,7 +19,12 @@ export class EmailStepperComponent extends StepperComponent implements OnInit {
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
-          if(auth !== null) this.email = auth.auth.email;
+          if(auth !== null) {
+            this.email = auth.auth.email;
+            this.setUserProperties();
+          }
+          else
+            this.getUserProperties();
       }
     );
   }
@@ -33,6 +38,9 @@ export class EmailStepperComponent extends StepperComponent implements OnInit {
   }
   setUserProperties():void {
     this.userService.setEmail(this.email);
+  }
+  getUserProperties():void {
+    this.email = this.userService.getEmail();
   }
   nextStepper():void {
     this.setUserProperties();

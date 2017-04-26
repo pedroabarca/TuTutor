@@ -11,8 +11,13 @@ export class UserService {
   isChanged$ = this.isFinished.asObservable();
   user:User = new User();
 
-  constructor() {}
+  constructor() {
+    console.log('New user service')
+  }
 
+  clearProperties():void {
+    this.user = new User();
+  }
   registerHasFinished():void {
     this.isFinished.next(this.user);
   }
@@ -26,6 +31,7 @@ export class UserService {
     return this.user.email;
   }
   setPassword(password:string):void {
+    console.log(this.user);
     this.user.password = password;
     this.propertyHasCHanged();
   }
@@ -43,7 +49,7 @@ export class UserService {
     this.user.gender = gender;
     this.propertyHasCHanged();
   }
-  getLastName():string {
+  getGender():string {
     return this.user.gender;
   }
   setPhone(phone:number):void {

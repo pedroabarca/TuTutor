@@ -28,7 +28,9 @@ export class PasswordStepperComponent extends StepperComponent implements OnInit
     this.password = this.userService.getPassword();
   }
   setUserProperties():void {
+    console.log(this.userService);
     this.userService.setPassword(this.password);
+    console.log(this.userService);
     this.userService.registerHasFinished();
   }
   previousStepper():void {
