@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import { AngularFire } from 'angularfire2';
@@ -13,7 +13,7 @@ import { AuthComponent } from '../shared/auth.component';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent extends AuthComponent {
+export class LoginComponent extends AuthComponent implements OnInit {
 
   form:FormGroup;
 
@@ -21,14 +21,13 @@ export class LoginComponent extends AuthComponent {
     super(angularFire, router, snackBar);
   }
   ngOnInit() {
-    this.subscribe();
     this.buildForm();
   }
   buildForm():void {
     this.form = this.formBuilder.group({
       'email' : [this.user.email, [
         Validators.required,
-        Validators.pattern('[a-z]+(.[_a-z0-9]+)*@[a-z0-9-]+(.[a-z0-9-]+)*.([a-z]{2,15})')
+        Validators.pattern(/[a-z]+(.[_a-z0-9]+)*@([a-z0-9-]+(.[a-z0-9-]+)*\.[a-z]{2,15})/)
       ]],
       'password' : [this.user.password, [
         Validators.required

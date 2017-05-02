@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -11,13 +11,16 @@ import { UserComponent } from '../shared/user.component';
   selector: 'app-admin',
 })
 
-export class TutorComponent extends UserComponent {
+export class TutorComponent extends UserComponent implements OnInit {
 
   userInfoSubscription:Subscription;
   view:string = 'month';
   viewDate: Date = new Date();
   events = [];
 
+  ngOnInit():void {
+    this.subscribe();
+  }
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {

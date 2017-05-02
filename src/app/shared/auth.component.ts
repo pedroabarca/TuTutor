@@ -10,7 +10,7 @@ import { User } from '../models/user';
   selector: 'app-auth',
 })
 
-export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
+export class AuthComponent extends BaseComponent implements OnDestroy {
 
   errors = {'auth/user-not-found': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/wrong-password': { value: 'Usuario y/o contraseña incorrectas'}, 'auth/invalid-email': { value: 'Formato de correo electrónico incorrecto' }, 'auth/email-already-in-use': { value: 'Este correo electrónico ya está siendo utilizado' }, 'auth/internal-error': { value: 'Ha ocurrido un error' } };
   authSubscription:Subscription;
@@ -21,20 +21,8 @@ export class AuthComponent extends BaseComponent implements OnInit, OnDestroy {
     super(snackBar);
     this.user = new User();
   }
-
-  ngOnInit() {
-    this.subscribe();
-  }
   ngOnDestroy():void {
     this.unsubscribe();
-  }
-  subscribe():void {
-    /*this.authSubscription = this.angularFire.auth.subscribe(
-      auth => {
-        if(auth !== null)
-          this.postSignIn(auth);
-      }
-    );*/
   }
   unsubscribe():void {
     if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();

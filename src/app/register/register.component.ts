@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFire } from 'angularfire2';
@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./register.component.css' ]
 })
 
-export class RegisterComponent extends AuthComponent {
+export class RegisterComponent extends AuthComponent implements OnInit {
 
   userChangesSubscription:Subscription;
   private userId:string;
@@ -23,19 +23,20 @@ export class RegisterComponent extends AuthComponent {
     super(angularFire, router, snackBar);
   }
 
+  ngOnInit():void {
+    this.subscribe();
+  }
   subscribe():void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
         if(auth !== null) {
           this.verifyUserData(auth);
           this.userId = auth.uid;
-          console.log(auth);
         }
       }
     );
     this.userChangesSubscription = this.userService.isFinished$.subscribe(
       user => {
-        console.log(this.angularFire.auth);
         this.user = user;
         if (this.userId === undefined) {
           this.createUser();
@@ -51,7 +52,6 @@ export class RegisterComponent extends AuthComponent {
       this.userService.setEmail(auth.google.email);
   }
   createUser():void {
-    console.log('Creating user');
     this.angularFire.auth.createUser({
       email: this.user.email,
       password: this.user.password
@@ -60,6 +60,7 @@ export class RegisterComponent extends AuthComponent {
     .catch((error:any) => { this.showErrorMessage(error.code) });
   }
   uploadUserPhoto(userId:string):void {
+    console.log('Pro');
     if (typeof(this.user.photo) === 'object') {
       let storageRef = firebase.storage().ref(userId);
       storageRef.put(this.user.photo)
@@ -76,8 +77,6 @@ export class RegisterComponent extends AuthComponent {
     }
   }
   createUserRecord(userId:string):void {
-    console.log(userId);
-    console.log(this.user);
     let users = this.angularFire.database.list('/users');
     users.update(userId, this.user)
     .then(() => this.uploadUserPhoto(userId));

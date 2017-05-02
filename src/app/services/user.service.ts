@@ -19,6 +19,7 @@ export class UserService {
     this.user = new User();
   }
   registerHasFinished():void {
+    console.log('Pro');
     this.isFinished.next(this.user);
   }
   propertyHasCHanged():void {

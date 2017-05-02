@@ -10,6 +10,7 @@ import { PasswordStepperComponent } from './register/steppers/password/password-
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { TutorHomeComponent } from './tutor/tutor-home/tutor-home.component';
 import { StudentHomeComponent } from './student/student-home/student-home.component';
+import { StudentFindComponent } from './student/student-find/student-find.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -19,32 +20,19 @@ import { NgModule } from '@angular/core';
       { path: '', component: LoginComponent },
       { path: 'register', component: RegisterComponent,
         children: [
-          {
-            path: '', component: IntroStepperComponent
-          },
-          {
-            path: 'email', component: EmailStepperComponent
-          },
-          {
-            path: 'name', component: NameStepperComponent
-          },
-          {
-            path: 'gender', component: GenderStepperComponent
-          },
-          {
-            path: 'phone', component: PhoneStepperComponent
-          },
-          {
-            path: 'photo', component: PhotoStepperComponent
-          },
-          {
-            path: 'password', component: PasswordStepperComponent
-          }
+          { path: '', component: IntroStepperComponent },
+          { path: 'email', component: EmailStepperComponent },
+          { path: 'name', component: NameStepperComponent },
+          { path: 'gender', component: GenderStepperComponent },
+          { path: 'phone', component: PhoneStepperComponent },
+          { path: 'photo', component: PhotoStepperComponent },
+          { path: 'password', component: PasswordStepperComponent }
         ]
       },
       { path: 'admin/home', component: AdminHomeComponent },
       { path: 'tutor/home', component: TutorHomeComponent },
-      { path: 'student/home', component: StudentHomeComponent }
+      { path: 'student/home', component: StudentHomeComponent },
+      { path: 'student/find', component: StudentFindComponent }
     ])
   ],
   exports: [RouterModule]

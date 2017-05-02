@@ -32,7 +32,7 @@ export class EmailStepperComponent extends StepperComponent implements OnInit {
     this.form = this.formBuilder.group({
       'data' : [this.email, [
         Validators.required,
-        Validators.pattern('[a-z]+(.[_a-z0-9]+)*@[a-z0-9-]+(.[a-z0-9-]+)*.([a-z]{2,15})')
+        Validators.pattern(/[a-z]+(.[_a-z0-9]+)*@([a-z0-9-]+(.[a-z0-9-]+)*\.[a-z]{2,15})/)
       ]]
     });
   }

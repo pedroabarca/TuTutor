@@ -12,6 +12,23 @@
   padding: 0;
   text-align: center;
 }
+.icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  float: left;
+  margin-right: 16px;
+}
+mdl-list-item {
+  height: 8rem;
+  width: 50%;
+}
+mdl-list-item a {
+  color: black;
+}
+.initial-margin {
+  margin: 0 16px;
+}
 @media (min-width: 480px) and (max-width: 839px) {
   .large-text {
     font-size: 24px;

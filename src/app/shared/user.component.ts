@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFire } from 'angularfire2';
@@ -11,7 +11,7 @@ import * as firebase from 'firebase';
   selector: 'app-user',
 })
 
-export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
+export class UserComponent extends BaseComponent implements OnDestroy {
 
   authSubscription:Subscription;
   userInfoSubscription:Subscription;
@@ -21,22 +21,8 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
     super(snackBar);
     this.user = new User();
   }
-  ngOnInit() {
-    this.subscribe();
-  }
   ngOnDestroy():void {
     this.unsubscribe();
-  }
-  subscribe():void {
-    this.authSubscription = this.angularFire.auth.subscribe(
-      auth => {
-        if(auth === null)
-          this.router.navigateByUrl('');
-        else {
-          console.log(auth);
-        }
-      }
-    );
   }
   getImage(auth:any):void {
     let url = '/users/' + auth.uid;
@@ -54,12 +40,11 @@ export class UserComponent extends BaseComponent implements OnInit, OnDestroy {
           console.log(error);
         });
       }
-      console.log(this.user.photo);
     });
   }
   unsubscribe():void {
-    this.authSubscription.unsubscribe();
-    this.userInfoSubscription.unsubscribe();
+    if(this.authSubscription !== undefined) this.authSubscription.unsubscribe();
+    if(this.userInfoSubscription !== undefined) this.userInfoSubscription.unsubscribe();
   }
   setUserMetaData(auth:any):void {
     this.getImage(auth);
