@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'intro-stepper',
+  selector: 'app-intro-stepper',
   templateUrl: './intro-stepper.component.html',
   styleUrls: ['./intro-stepper.component.css']
 })
 
 export class IntroStepperComponent {
+  @Input('stepImg') img;
+  constructor(private router: Router) {
+    this.img = 'email.svg';
+  }
 
-  constructor(private router:Router) {}
-
-  nextStepper():void {
+  nextStepper(): void {
     this.router.navigateByUrl('register/email');
   }
 }

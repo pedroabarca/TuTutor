@@ -1,34 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators }  from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { StepperComponent } from '../../../shared/stepper.component';
 
 @Component({
-  selector: 'email-stepper',
+  selector: 'app-email-stepper',
   templateUrl: './email-stepper.component.html',
   styleUrls: ['./email-stepper.component.css'],
 })
 
 export class EmailStepperComponent extends StepperComponent implements OnInit {
-
-  email:string;
+  email: string;
 
   ngOnInit() {
     this.subscribe();
     this.buildForm();
   }
-  subscribe():void {
+  subscribe(): void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
-          if(auth !== null) {
+          if (auth !== null) {
             this.email = auth.auth.email;
             this.setUserProperties();
-          }
-          else
+          } else {
             this.getUserProperties();
-      }
+      }}
     );
   }
-  buildForm():void {
+  buildForm(): void {
     this.form = this.formBuilder.group({
       'data' : [this.email, [
         Validators.required,
@@ -36,17 +34,17 @@ export class EmailStepperComponent extends StepperComponent implements OnInit {
       ]]
     });
   }
-  setUserProperties():void {
+  setUserProperties(): void {
     this.userService.setEmail(this.email);
   }
-  getUserProperties():void {
+  getUserProperties(): void {
     this.email = this.userService.getEmail();
   }
-  nextStepper():void {
+  nextStepper(): void {
     this.setUserProperties();
     this.router.navigateByUrl('register/name');
   }
-  previousStepper():void {
+  previousStepper(): void {
     this.router.navigateByUrl('register');
   }
 }

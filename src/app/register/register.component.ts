@@ -15,21 +15,23 @@ import * as firebase from 'firebase';
 
 export class RegisterComponent extends AuthComponent implements OnInit {
 
-  userChangesSubscription:Subscription;
-  private userId:string;
-  private provider:number;
-
-  constructor(protected angularFire:AngularFire, protected router:Router, protected snackBar:MdlSnackbarService, private userService:UserService) {
+  userChangesSubscription: Subscription;
+  stepImg: string;
+  private userId: string;
+  private provider: number;
+  constructor(protected angularFire: AngularFire, protected router: Router,
+              protected snackBar: MdlSnackbarService, private userService: UserService) {
     super(angularFire, router, snackBar);
+
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.subscribe();
   }
-  subscribe():void {
+  subscribe(): void {
     this.authSubscription = this.angularFire.auth.subscribe(
       auth => {
-        if(auth !== null) {
+        if (auth !== null) {
           this.verifyUserData(auth);
           this.userId = auth.uid;
         }
@@ -40,50 +42,50 @@ export class RegisterComponent extends AuthComponent implements OnInit {
         this.user = user;
         if (this.userId === undefined) {
           this.createUser();
-        } else
+        } else {
           this.createUserRecord(this.userId);
-      }
+        }}
     );
   }
-  verifyUserData(auth:any):void {
-    if(auth.provider === 2)
+  verifyUserData(auth: any): void {
+    if (auth.provider === 2) {
       this.userService.setEmail(auth.facebook.email);
-    else if(auth.provider === 3)
+    }else if (auth.provider === 3) {
       this.userService.setEmail(auth.google.email);
-  }
-  createUser():void {
+    }}
+  createUser(): void {
     this.angularFire.auth.createUser({
       email: this.user.email,
       password: this.user.password
     })
-    .then((response) => { this.createUserRecord(response.uid) })
-    .catch((error:any) => { this.showErrorMessage(error.code) });
+    .then((response) => { this.createUserRecord(response.uid); })
+    .catch((error: any) => { this.showErrorMessage(error.code); });
   }
-  uploadUserPhoto(userId:string):void {
+  uploadUserPhoto(userId: string): void {
     console.log('Pro');
     if (typeof(this.user.photo) === 'object') {
-      let storageRef = firebase.storage().ref(userId);
+      const storageRef = firebase.storage().ref(userId);
       storageRef.put(this.user.photo)
       .then((snapshot) => {
         this.userService.clearProperties();
-        this.router.navigateByUrl('student/home')
+        this.router.navigateByUrl('student/home');
       })
       .catch(function(error) {
         console.log(error);
       });
     } else {
       this.userService.clearProperties();
-      this.router.navigateByUrl('student/home')
+      this.router.navigateByUrl('student/home');
     }
   }
-  createUserRecord(userId:string):void {
-    let users = this.angularFire.database.list('/users');
+  createUserRecord(userId: string): void {
+    const users = this.angularFire.database.list('/users');
     users.update(userId, this.user)
     .then(() => this.uploadUserPhoto(userId));
   }
-  unsubscribe():void {
-    if (this.authSubscription !== undefined) this.authSubscription.unsubscribe();
-    if (this.userInfoSubscription !== undefined) this.userInfoSubscription.unsubscribe();
-    if (this.userChangesSubscription !== undefined) this.userChangesSubscription.unsubscribe();
+  unsubscribe(): void {
+    if (this.authSubscription !== undefined) {this.authSubscription.unsubscribe(); }
+    if (this.userInfoSubscription !== undefined) {this.userInfoSubscription.unsubscribe(); }
+    if (this.userChangesSubscription !== undefined) {this.userChangesSubscription.unsubscribe(); }
   }
 }

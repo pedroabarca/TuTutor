@@ -17,7 +17,8 @@ import { UserService } from '../services/user.service';
 
 @NgModule({
   imports: [CommonModule, MdlModule, RouterModule, FormsModule, ReactiveFormsModule],
-  declarations: [RegisterComponent, IntroStepperComponent, NameStepperComponent, GenderStepperComponent, PhoneStepperComponent, EmailStepperComponent, PhotoStepperComponent, PasswordStepperComponent],
+  declarations: [RegisterComponent, IntroStepperComponent, NameStepperComponent, GenderStepperComponent,
+    PhoneStepperComponent, EmailStepperComponent, PhotoStepperComponent, PasswordStepperComponent],
   exports: [RegisterComponent],
   providers: [UserService]
 })
