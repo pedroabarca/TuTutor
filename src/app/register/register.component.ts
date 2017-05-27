@@ -18,13 +18,12 @@ export class RegisterComponent extends AuthComponent implements OnInit {
   userChangesSubscription: Subscription;
   stepImg: string;
   private userId: string;
-  private provider: number;
   constructor(protected angularFire: AngularFire, protected router: Router,
               protected snackBar: MdlSnackbarService, private userService: UserService) {
     super(angularFire, router, snackBar);
+    this.stepImg = 'logo.png';
 
   }
-
   ngOnInit(): void {
     this.subscribe();
   }

@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './intro-stepper.component.html',
   styleUrls: ['./intro-stepper.component.css']
 })
-
 export class IntroStepperComponent {
-  @Input('stepImg') img;
+  @Input('stepImg') stepImg: string;
   constructor(private router: Router) {
-    this.img = 'email.svg';
+    this.stepImg = 'email.svg';
   }
+
 
   nextStepper(): void {
     this.router.navigateByUrl('register/email');
